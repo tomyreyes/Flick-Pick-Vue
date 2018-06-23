@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-  <FeaturedMovies/>
-   
+  <FeaturedMovies v-bind:userList="userList" v-on:sendMovie="addMovie($event)"/>
   </div>
 </template>
 
@@ -13,6 +12,18 @@ export default {
   components: {
     FeaturedMovies,
     UserList
+  },
+  data(){
+    return{
+      userList: []
+    }
+  },
+  methods:{
+    addMovie(id){
+      this.userList.push(id)
+      console.log(this.userList)
+      
+    }
   }
 }
 </script>

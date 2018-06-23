@@ -4,7 +4,7 @@
         <ul>
             <li v-for="(movie, index) in movieList" :key="index">
                 {{movie.title}}
-                <button v-on:click="addMovie(movie.id)">Add</button>
+                <button v-on:click="sendMovie(movie.id)">Add</button>
             </li>
         </ul>
         </div>
@@ -17,13 +17,18 @@ export default {
     name: 'FeaturedMovies',
     data(){
         return {
-             movieList: null,
-             userList: []
+             movieList: null
         }
     },
     methods: {
-        addMovie(id){
-           this.userList.push(id)
+        sendMovie(id){
+        //when user clicks on sendMovie also change if clicked to true.
+           this.$emit('sendMovie', id)
+        }
+    },
+    props:{
+        userList: {
+            type: Array
         }
     },
     created(){
