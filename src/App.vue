@@ -19,10 +19,9 @@ export default {
     }
   },
   methods:{
-    addMovie(id){
+    addMovie(id, add){
+      console.log(add)
       this.userList.push(id)
-      console.log(this.userList)
-      
     }
   }
 }

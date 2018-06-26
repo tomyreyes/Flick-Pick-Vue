@@ -17,13 +17,18 @@ export default {
     name: 'FeaturedMovies',
     data(){
         return {
-             movieList: null
+             movieList: null,
+             selected: false
         }
     },
     methods: {
         sendMovie(id){
-        //when user clicks on sendMovie also change if clicked to true.
-           this.$emit('sendMovie', id)
+            console.log(this.userList.includes(id))
+            if(this.userList.includes(id)){
+                this.selected = true
+            }else {
+                this.$emit('sendMovie', id)
+            }
         }
     },
     props:{
@@ -34,7 +39,7 @@ export default {
     created(){
         axios({
             method: 'GET',
-            url: 'https://api.themoviedb.org/4/list/10',
+            url: 'https://api.themoviedb.org/4/list/2',
             params:{
                 page: 1,
                 api_key: '2d1610b0077610c43b2fe59ad827cfec'
@@ -43,6 +48,7 @@ export default {
     }
 }
 
+//make an array 
 
 </script>
 
