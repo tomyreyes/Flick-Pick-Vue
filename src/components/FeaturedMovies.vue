@@ -23,12 +23,7 @@ export default {
     },
     methods: {
         sendMovie(id){
-            console.log(this.userList.includes(id))
-            if(this.userList.includes(id)){
-                this.selected = true
-            }else {
                 this.$emit('sendMovie', id)
-            }
         }
     },
     props:{
@@ -39,7 +34,7 @@ export default {
     created(){
         axios({
             method: 'GET',
-            url: 'https://api.themoviedb.org/4/list/2',
+            url: 'https://api.themoviedb.org/4/list/10',
             params:{
                 page: 1,
                 api_key: '2d1610b0077610c43b2fe59ad827cfec'
@@ -47,8 +42,6 @@ export default {
         }).then(response => (this.movieList = response.data.results))
     }
 }
-
-//make an array 
 
 </script>
 

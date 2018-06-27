@@ -1,6 +1,7 @@
 <template>
   <div id="app">
   <FeaturedMovies v-bind:userList="userList" v-on:sendMovie="addMovie($event)"/>
+  <UserList v-bind:userList="userList"/>
   </div>
 </template>
 
@@ -19,9 +20,15 @@ export default {
     }
   },
   methods:{
-    addMovie(id, add){
-      console.log(add)
+    addMovie(id){
+      if(!this.userList.includes(id)){
+      
       this.userList.push(id)
+      
+      } else {
+        let filteredList = this.userList.filter(value => value !== id)
+        this.userList = filteredList
+      }
     }
   }
 }
