@@ -4,7 +4,8 @@
         <ul>
             <li v-for="(movie, index) in movieList" :key="index">
                 {{movie.title}}
-                <button v-on:click="sendMovie(movie.id)">Add</button>
+                <button v-if="userList.includes(movie.id)" v-on:click="sendMovie(movie.id)">Remove</button>
+                <button v-else v-on:click="sendMovie(movie.id)">Add</button>
             </li>
         </ul>
         </div>
@@ -17,8 +18,7 @@ export default {
     name: 'FeaturedMovies',
     data(){
         return {
-             movieList: null,
-             selected: false
+             movieList: null
         }
     },
     methods: {

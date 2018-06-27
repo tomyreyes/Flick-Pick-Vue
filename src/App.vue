@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-  <FeaturedMovies v-bind:userList="userList" v-on:sendMovie="addMovie($event)"/>
-  <UserList v-bind:userList="userList"/>
+  <FeaturedMovies v-bind:userList="userList" v-on:sendMovie="toggleMovie($event)"/>
+  <UserList v-bind:userList="userList" v-on:deleteMovie="deleteMovie($event)"/>
   </div>
 </template>
 
@@ -20,18 +20,24 @@ export default {
     }
   },
   methods:{
-    addMovie(id){
+    toggleMovie(id){
       if(!this.userList.includes(id)){
       
       this.userList.push(id)
       
       } else {
-        let filteredList = this.userList.filter(value => value !== id)
-        this.userList = filteredList
+        let keepList = this.userList.filter(value => value !== id)
+        this.userList = keepList
       }
+    },
+    deleteMovie(id){
+      let keepList = this.userList.filter(value => value !== id)
+      this.userList = keepList
     }
   }
+
 }
+ 
 </script>
 
 <style>
