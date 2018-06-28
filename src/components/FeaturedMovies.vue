@@ -1,13 +1,19 @@
 <template>
-    <div>
+    <div class="featured">
+       
         <h1>This week's top movies</h1>
-        <ul>
-            <li v-for="(movie, index) in movieList" :key="index">
-                {{movie.title}}
-                <button v-if="userList.includes(movie.id)" v-on:click="sendMovie(movie.id)">Remove</button>
-                <button v-else v-on:click="sendMovie(movie.id)">Add</button>
-            </li>
-        </ul>
+         <v-container grid-list>
+             <v-flex xs-12 xs4>
+        <v-card v-for="(movie, index ) in movieList" :key="index">
+        <v-card-media height="400" :src="'http://image.tmdb.org/t/p/w342'+ movie.poster_path" >
+        </v-card-media>
+        <v-card-actions>
+            <v-btn small flat v-if="userList.includes(movie.id)" v-on:click="sendMovie(movie.id)">Remove</v-btn>
+            <v-btn small flat v-else v-on:click="sendMovie(movie.id)">Add</v-btn>
+        </v-card-actions>
+        </v-card>
+             </v-flex>
+        </v-container>
         </div>
 </template>
 
@@ -48,6 +54,13 @@ export default {
 <style scoped>
 ul{
     list-style: none;
+}
+.featured{
+    padding-top: 30px;
+}
+.card__media{
+    height: 300px;
+    width: 300px;
 }
 
 </style>

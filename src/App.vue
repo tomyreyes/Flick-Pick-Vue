@@ -1,9 +1,32 @@
 <template>
   <div id="app">
-  <FeaturedMovies v-bind:userList="userList" v-on:sendMovie="toggleMovie($event)"/>
-  <UserList v-bind:userList="userList" v-on:deleteMovie="deleteMovie($event)"/>
+    <v-app>
+       <v-navigation-drawer v-model="sideNav" fixed app>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title>
+              My List
+            </v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
+       <v-toolbar dark>
+         <v-toolbar-side-icon 
+         v-on:click.stop="sideNav = !sideNav"
+         class="hidden-sm-and-up">X</v-toolbar-side-icon>
+         <v-toolbar-title> Flick Pick </v-toolbar-title>
+         <v-spacer></v-spacer>
+         <v-toolbar-items class="hidden-xs-only">
+           <v-btn flat>My List</v-btn>
+         </v-toolbar-items>
+         </v-toolbar>
+     
+      <FeaturedMovies v-bind:userList="userList" v-on:sendMovie="toggleMovie($event)"/>
+      <UserList v-bind:userList="userList" v-on:deleteMovie="deleteMovie($event)"/>
+    </v-app>
   </div>
 </template>
+
 
 <script>
 import FeaturedMovies from './components/FeaturedMovies'
@@ -16,7 +39,8 @@ export default {
   },
   data(){
     return{
-      userList: []
+      userList: [],
+      sideNav: false
     }
   },
   methods:{
@@ -47,6 +71,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 </style>

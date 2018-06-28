@@ -1,10 +1,10 @@
 <template>
     <div>
-        <h1>Your List</h1>
+        <h1>My List</h1>
         <ul>
             <li v-for="(movie, index) in userList" :key="index">
                 {{movie}}
-                <button v-on:click="deleteMovie(movie)">X</button>
+                <v-btn small v-on:click="deleteMovie(movie)">X</v-btn >
             </li>
             
             </ul>
