@@ -2,17 +2,20 @@
     <div class="featured">
        
         <h1>This week's top movies</h1>
-         <v-container grid-list>
-             <v-flex xs-12 xs4>
-        <v-card v-for="(movie, index ) in movieList" :key="index">
-        <v-card-media height="400" :src="'http://image.tmdb.org/t/p/w342'+ movie.poster_path" >
+        <v-container grid-list-md >
+        <v-layout row wrap>
+        <v-flex class="card-container" xs-12 sm4 align-end flex-box v-for="(movie, index ) in movieList" :key="index">
+        <v-card >
+        <v-card-media height="550" :src="'http://image.tmdb.org/t/p/w342'+ movie.poster_path" >
         </v-card-media>
         <v-card-actions>
             <v-btn small flat v-if="userList.includes(movie.id)" v-on:click="sendMovie(movie.id)">Remove</v-btn>
             <v-btn small flat v-else v-on:click="sendMovie(movie.id)">Add</v-btn>
+            <v-btn small flat>Details</v-btn>
         </v-card-actions>
         </v-card>
              </v-flex>
+             </v-layout>
         </v-container>
         </div>
 </template>
@@ -59,8 +62,11 @@ ul{
     padding-top: 30px;
 }
 .card__media{
-    height: 300px;
-    width: 300px;
+    /* height: 600px; */
+    /* width: 300px; */
+}
+.card-container{
+    margin-bottom: 10px;
 }
 
 </style>
