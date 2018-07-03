@@ -12,7 +12,7 @@
             <v-card-text>Score: {{movie.vote_average}}</v-card-text>
                 <v-icon dark color="red darken-1"   v-if="userList.includes(movie.id)" v-on:click="sendMovie(movie.id)">remove</v-icon>
                 <v-icon dark color="green accent-3" v-else v-on:click="sendMovie(movie.id)">add</v-icon>
-            <v-btn small flat>Details</v-btn>
+            <v-btn small flat v-on:click="moreDetails(movie)">Details</v-btn>
         </v-card-actions>
         </v-card>
              </v-flex>
@@ -23,22 +23,40 @@
         width="1200"
         >
         <v-card>
-            <v-card-title
+        <v-card-title
+        class="display-1"
          >
          {{clickedMovie.title}}
+         <v-btn v-if="userList.includes(clickedMovie.id)" 
+         v-on:click="sendMovie(clickedMovie.id)"
+         icon
+         absolute
+         right>
+             <v-icon dark color="red darken-1">remove</v-icon>
+         </v-btn>
+          
+        <v-btn 
+        v-else 
+        v-on:click="sendMovie(clickedMovie.id)"
+        icon
+        absolute
+        right> <v-icon dark color="green accent-3" >add</v-icon></v-btn>
             </v-card-title>
         <v-card-media height="700" :src="`http://image.tmdb.org/t/p/w780${clickedMovie.backdrop_path}`"  >
         </v-card-media>
-        <v-card-title>
+        <v-card-title
+        class="title"
+        >
             Overview
         </v-card-title>
-            <v-card-text>
+            <v-card-text
+            class="body-2"
+            >
                 {{clickedMovie.overview}}
             </v-card-text>
-             <v-card-actions>
-                <v-icon dark color="red darken-1"   v-if="userList.includes(clickedMovie.id)" v-on:click="sendMovie(clickedMovie.id)">remove</v-icon>
-                <v-icon dark color="green accent-3" v-else v-on:click="sendMovie(clickedMovie.id)">add</v-icon>
-        </v-card-actions>
+        <v-card-title class="title cast">
+            Cast
+        </v-card-title>
             <v-divider></v-divider>
         </v-card>
         </v-dialog>
@@ -96,7 +114,11 @@ ul {
   opacity: 0.7;
 }
 
-.card__title{
-    justify-content: center;
+.cast{
+    justify-content: left !important;
+}
+
+.card__title {
+  justify-content: center;
 }
 </style>
