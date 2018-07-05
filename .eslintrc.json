@@ -13,6 +13,7 @@
 				"alignAttributesVertically": true,
 				"ignores": []
 			}
-		]
+		],
+		"no-console": 0
 	}
 }
