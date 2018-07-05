@@ -17,7 +17,7 @@
 						:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
 						class="poster" 
 						height="550" 
-						@:click="moreDetails(movie)" 
+						@click="moreDetails(movie)" 
 					/>
 					<v-card-actions>
 						<v-card-text>Score: {{ movie.vote_average }}</v-card-text>
@@ -25,20 +25,20 @@
 							v-if="userList.includes(movie.id)" 
 							dark 
 							color="red darken-1"   
-							@:click="sendMovie(movie.id)">remove
+							@click="sendMovie(movie.id)">remove
 						</v-icon>
 						<v-icon 
 							v-else
 							color="green accent-3" 
 							dark 
-							@:click="sendMovie(movie.id)"
+							@click="sendMovie(movie.id)"
 						>
 							add
 						</v-icon>
 						<v-btn 
 							small 
 							flat 
-							@:click="moreDetails(movie)">
+							@click="moreDetails(movie)">
 							Details
 						</v-btn>
 					</v-card-actions>
@@ -72,7 +72,7 @@
 					icon
 					absolute
 					right
-					@:click="sendMovie(clickedMovie.id)"
+					@click="sendMovie(clickedMovie.id)"
 				> 
 					<v-icon 
 						dark 

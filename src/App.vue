@@ -16,7 +16,7 @@
 			<v-toolbar dark>
 				<v-toolbar-side-icon 
 					class="hidden-sm-and-up"
-					@:click.stop="sideNav = !sideNav">
+					@click.stop="sideNav = !sideNav">
 					X
 				</v-toolbar-side-icon>
 				<v-toolbar-title> Flick Pick </v-toolbar-title>
@@ -27,10 +27,10 @@
 			</v-toolbar>
 			<FeaturedMovies 
 				:user-list="userList" 
-				@:sendMovie="toggleMovie($event)"/>
+				@sendMovie="toggleMovie($event)"/>
 			<UserList 
 				:user-list="userList" 
-				@:deleteMovie="deleteMovie($event)"/>
+				@deleteMovie="deleteMovie($event)"/>
 		</v-app>
 	</div>
 </template>
@@ -75,6 +75,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  /* margin-top: 60px; */
 }
 </style>

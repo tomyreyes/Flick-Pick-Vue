@@ -9,7 +9,7 @@
 				{{ movie }}
 				<v-btn 
 					small 
-					@:click="deleteMovie(movie)">
+					@click="deleteMovie(movie)">
 					X
 				</v-btn >
 			</li>
