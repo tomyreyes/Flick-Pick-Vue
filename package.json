@@ -16,6 +16,11 @@
     "@vue/cli-plugin-babel": "^3.0.0-rc.3",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.3",
     "@vue/cli-service": "^3.0.0-rc.3",
+    "eslint": "^5.0.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-html": "^4.0.5",
+    "eslint-plugin-prettier": "^2.6.1",
+    "eslint-plugin-vue": "^4.5.0",
     "vue-template-compiler": "^2.5.16"
   },
   "eslintConfig": {
@@ -25,6 +30,7 @@
     },
     "extends": [
       "plugin:vue/essential",
+      "plugin:prettier/recommended",
       "eslint:recommended"
     ],
     "rules": {},
