@@ -10,10 +10,10 @@
 				item-value="id"
 				placeholder="Search Movie"
 			/>
+			
 		</v-card-text>
 	</v-card>
-</template>
-
+</template> 
 <script>
 import axios from 'axios'
 
@@ -33,7 +33,7 @@ export default {
         return Object.assign(
           {},
           {
-            title: movie.title,
+            title: `${movie.title}(${movie.release_date})`,
             release: movie.release_date,
             id: movie.id,
             details() {

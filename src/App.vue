@@ -25,7 +25,7 @@
 					<v-btn flat>My List</v-btn>
 				</v-toolbar-items>
 			</v-toolbar>
-			<SearchBar/>
+			<SearchToolBar/>
 			<FeaturedMovies 
 				:user-list="userList" 
 				@sendMovie="toggleMovie($event)"/>
@@ -40,12 +40,14 @@
 <script>
 import FeaturedMovies from './components/FeaturedMovies'
 import SearchBar from './components/SearchBar'
+import SearchToolBar from './components/SearchToolBar'
 import UserList from './components/UserList'
 export default {
   name: 'App',
   components: {
     FeaturedMovies,
     SearchBar,
+    SearchToolBar,
     UserList
   },
   data() {
