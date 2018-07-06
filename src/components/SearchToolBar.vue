@@ -49,11 +49,36 @@
 				>
 					<v-list-tile-content>
 						<v-list-tile-title 
-							v-text="item.title"/>
+							@click="sayHi"
+							v-text="item.title"
+						/>
 						<v-list-tile-sub-title v-text="item.release_date"/>
 					</v-list-tile-content>
 					<v-list-tile-action>
-						<v-icon>mdi-coin</v-icon>
+						<v-btn 
+							v-if="userList.includes(item.id)"
+							icon
+							absolute
+							right
+							@click="sendMovie(item.id)"
+						>
+							<v-icon 
+								dark 
+								color="red darken-1">remove</v-icon>
+						</v-btn>
+						<v-btn
+							v-else
+							icon
+							absolute
+							right
+							@click="sendMovie(item.id)"
+						> 
+							<v-icon 
+								dark 
+								color="green accent-3" >
+								add
+							</v-icon>
+						</v-btn>
 					</v-list-tile-action>
 				</template>
 			</v-autocomplete>
@@ -69,6 +94,14 @@
 import axios from 'axios'
 export default {
   name: 'SearchToolBar',
+  props: {
+    userList: {
+      default() {
+        return []
+      },
+      type: Array
+    }
+  },
   data() {
     return {
       isLoading: false,
@@ -96,6 +129,18 @@ export default {
         .then(response => (this.items = response.data.results))
         .catch(err => console.log(err))
         .finally(() => (this.isLoading = false))
+    }
+  },
+  methods: {
+    sendMovie(id) {
+      this.$emit('sendMovie', id)
+    },
+    moreDetails(movie) {
+      this.dialog = true
+      this.clickedMovie = movie
+    },
+    sayHi() {
+      console.log('hi')
     }
   }
 }

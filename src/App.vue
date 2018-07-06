@@ -1,28 +1,28 @@
 <template>
 	<div id="App">
 		<v-app>
-			<SearchToolBar/>
+			<SearchToolBar 
+				:user-list="userList"
+				@sendMovie="toggleMovie($event)"
+			/>
 			<FeaturedMovies 
 				:user-list="userList" 
-				@sendMovie="toggleMovie($event)"/>
+				@sendMovie="toggleMovie($event)"
+			/>
 			<UserList 
 				:user-list="userList" 
 				@deleteMovie="deleteMovie($event)"/>
 		</v-app>
 	</div>
 </template>
-
-
 <script>
 import FeaturedMovies from './components/FeaturedMovies'
-import SearchBar from './components/SearchBar'
 import SearchToolBar from './components/SearchToolBar'
 import UserList from './components/UserList'
 export default {
   name: 'App',
   components: {
     FeaturedMovies,
-    SearchBar,
     SearchToolBar,
     UserList
   },

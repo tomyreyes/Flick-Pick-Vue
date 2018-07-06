@@ -61,7 +61,7 @@
 					icon
 					absolute
 					right
-					@:click="sendMovie(clickedMovie.id)"
+					@click="sendMovie(clickedMovie.id)"
 				>
 					<v-icon 
 						dark 
