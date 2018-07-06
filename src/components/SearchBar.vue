@@ -3,8 +3,11 @@
 		<v-card-text>
 			<v-autocomplete
 				v-model="userInput"
+				:items="movies"
 				:search-input.sync="search"
 				:loading="isLoading"
+				item-text="title"
+				item-value="id"
 				placeholder="Search Movie"
 			/>
 		</v-card-text>
@@ -22,6 +25,23 @@ export default {
       isLoading: false,
       search: null,
       searchResults: []
+    }
+  },
+  computed: {
+    movies() {
+      return this.searchResults.map(movie => {
+        return Object.assign(
+          {},
+          {
+            title: movie.title,
+            release: movie.release_date,
+            id: movie.id,
+            details() {
+              return this.title
+            }
+          }
+        )
+      })
     }
   },
   watch: {
