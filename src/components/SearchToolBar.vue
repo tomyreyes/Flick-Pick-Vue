@@ -49,7 +49,7 @@
 				>
 					<v-list-tile-content>
 						<v-list-tile-title 
-							@click="sayHi"
+							@click="moreDetails(item)"
 							v-text="item.title"
 						/>
 						<v-list-tile-sub-title v-text="item.release_date"/>
@@ -87,6 +87,61 @@
 				<v-btn flat>My List</v-btn>
 			</v-toolbar-items>
 		</v-toolbar>
+		<v-dialog 
+			v-if="clickedMovie !== null"
+			v-model="dialog"
+			width="1200"
+		>
+			<v-card>
+				<v-card-title
+					class="display-1"
+				>
+					{{ clickedMovie.title }}
+					<v-btn 
+						v-if="userList.includes(clickedMovie.id)"
+						icon
+						absolute
+						right
+						@click="sendMovie(clickedMovie.id)"
+					>
+						<v-icon 
+							dark 
+							color="red darken-1">remove</v-icon>
+					</v-btn>
+					<v-btn
+						v-else
+						icon
+						absolute
+						right
+						@click="sendMovie(clickedMovie.id)"
+					> 
+						<v-icon 
+							dark 
+							color="green accent-3" >
+							add
+						</v-icon>
+					</v-btn>
+				</v-card-title>
+				<v-card-media 
+					:src="`http://image.tmdb.org/t/p/w780${clickedMovie.backdrop_path}`"
+					height="700" 
+				/>
+				<v-card-title
+					class="title"
+				>
+					Overview
+				</v-card-title>
+				<v-card-text
+					class="body-2"
+				>
+					{{ clickedMovie.overview }}
+				</v-card-text>
+				<v-card-title class="title cast">
+					Cast
+				</v-card-title>
+				<v-divider/>
+			</v-card>
+		</v-dialog>
 	</div>
 </template>
 	
@@ -104,6 +159,8 @@ export default {
   },
   data() {
     return {
+      clickedMovie: null,
+      dialog: false,
       isLoading: false,
       items: [],
       model: null,
@@ -138,9 +195,6 @@ export default {
     moreDetails(movie) {
       this.dialog = true
       this.clickedMovie = movie
-    },
-    sayHi() {
-      console.log('hi')
     }
   }
 }
