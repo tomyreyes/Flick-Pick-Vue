@@ -1,60 +1,70 @@
 <template>
-	<v-toolbar
-		color="orange accent-1"
-		prominent
-		tabs
-	>
-		<v-toolbar-side-icon/>
-		<v-toolbar-title class="title mr-4">Search</v-toolbar-title>
-		<v-autocomplete
-			v-model="model"
-			:items="items"
-			:loading="isLoading"
-			:search-input.sync="search"
-			clearable
-			hide-details
-			hide-selected
-			item-text="title"
-			item-value="id"
-			label="Search for a movie..."
-			solo
-		>
-			<template slot="no-data">
+	<div>
+		<v-navigation-drawer 
+			v-model="sideNav" 
+			fixed 
+			app>
+			<v-list>
 				<v-list-tile>
 					<v-list-tile-title>
-						Search for your favorite
-						<strong>Movie</strong>
+						My List
 					</v-list-tile-title>
 				</v-list-tile>
-			</template>
-			<template
-				slot="item"
-				slot-scope="{ item, tile }"
-			>
-				<v-list-tile-content>
-					<v-list-tile-title 
-						v-text="item.title"/>
-					<v-list-tile-sub-title v-text="item.release_date"/>
-				</v-list-tile-content>
-				<v-list-tile-action>
-					<v-icon>mdi-coin</v-icon>
-				</v-list-tile-action>
-			</template>
-		</v-autocomplete>
-		<v-tabs
-			slot="extension"
-			:hide-slider="!model"
-			color="transparent"
-			slider-color="blue-grey"
+			</v-list>
+		</v-navigation-drawer>
+		<v-toolbar
+			dark	
 		>
-			<v-tab :disabled="!model">News</v-tab>
-			<v-tab :disabled="!model">Trading</v-tab>
-			<v-tab :disabled="!model">Blog</v-tab>
-		</v-tabs>
-	</v-toolbar>
+			<v-toolbar-side-icon 
+				class="hidden-sm-and-up"
+				@click.stop="sideNav = !sideNav">
+				X
+			</v-toolbar-side-icon>
+			<v-toolbar-title class="title mr-4">Flick Pick</v-toolbar-title>
+			<v-spacer/>
+			<v-autocomplete
+				v-model="model"
+				:items="items"
+				:loading="isLoading"
+				:search-input.sync="search"
+				clearable
+				hide-details
+				hide-selected
+				item-text="title"
+				item-value="id"
+				label="Search for a movie..."
+				solo
+			>
+				<template slot="no-data">
+					<v-list-tile>
+						<v-list-tile-title>
+							Search for your favorite
+							<strong>Movie</strong>
+						</v-list-tile-title>
+					</v-list-tile>
+				</template>
+				<template
+					slot="item"
+					slot-scope="{ item, tile }"
+				>
+					<v-list-tile-content>
+						<v-list-tile-title 
+							v-text="item.title"/>
+						<v-list-tile-sub-title v-text="item.release_date"/>
+					</v-list-tile-content>
+					<v-list-tile-action>
+						<v-icon>mdi-coin</v-icon>
+					</v-list-tile-action>
+				</template>
+			</v-autocomplete>
+			<v-spacer/>
+			<v-toolbar-items class="hidden-xs-only">
+				<v-btn flat>My List</v-btn>
+			</v-toolbar-items>
+		</v-toolbar>
+	</div>
 </template>
 	
-
 <script>
 import axios from 'axios'
 export default {
@@ -64,7 +74,8 @@ export default {
       isLoading: false,
       items: [],
       model: null,
-      search: null
+      search: null,
+      sideNav: false
     }
   },
 

@@ -1,30 +1,6 @@
 <template>
 	<div id="App">
 		<v-app>
-			<v-navigation-drawer 
-				v-model="sideNav" 
-				fixed 
-				app>
-				<v-list>
-					<v-list-tile>
-						<v-list-tile-title>
-							My List
-						</v-list-tile-title>
-					</v-list-tile>
-				</v-list>
-			</v-navigation-drawer>
-			<v-toolbar dark>
-				<v-toolbar-side-icon 
-					class="hidden-sm-and-up"
-					@click.stop="sideNav = !sideNav">
-					X
-				</v-toolbar-side-icon>
-				<v-toolbar-title> Flick Pick </v-toolbar-title>
-				<v-spacer/>
-				<v-toolbar-items class="hidden-xs-only">
-					<v-btn flat>My List</v-btn>
-				</v-toolbar-items>
-			</v-toolbar>
 			<SearchToolBar/>
 			<FeaturedMovies 
 				:user-list="userList" 
