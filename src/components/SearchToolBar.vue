@@ -16,11 +16,9 @@
 			dark	
 		>
 			<v-toolbar-side-icon 
-				class="hidden-sm-and-up"
-				@click.stop="sideNav = !sideNav">
-				X
-			</v-toolbar-side-icon>
-			<v-toolbar-title class="title mr-4">Flick Pick</v-toolbar-title>
+				class="hidden-md-and-up"
+				@click.stop="sideNav = !sideNav"/>
+			<v-toolbar-title class="title mr-4 hidden-sm-and-down">Flick Pick</v-toolbar-title>
 			<v-spacer/>
 			<v-autocomplete
 				v-model="model"
@@ -83,7 +81,7 @@
 				</template>
 			</v-autocomplete>
 			<v-spacer/>
-			<v-toolbar-items class="hidden-xs-only">
+			<v-toolbar-items class="hidden-sm-and-down">
 				<v-btn flat>My List</v-btn>
 			</v-toolbar-items>
 		</v-toolbar>
@@ -124,6 +122,7 @@
 				</v-card-title>
 				<v-card-media 
 					:src="`http://image.tmdb.org/t/p/w780${clickedMovie.backdrop_path}`"
+					class="dialog-media"
 					height="700" 
 				/>
 				<v-card-title
@@ -168,7 +167,6 @@ export default {
       sideNav: false
     }
   },
-
   watch: {
     search(val) {
       this.isLoading = true
@@ -199,3 +197,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@media only screen and (max-width: 999px) {
+  .dialog-media {
+    height: 300px !important;
+  }
+}
+.v-card__title {
+  justify-content: center;
+}
+</style>

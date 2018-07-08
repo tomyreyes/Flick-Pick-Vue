@@ -7,8 +7,9 @@
 			<v-flex 
 				v-for="(movie, index ) in movieList" 
 				:key="index"
-				xs-12 
-				sm4 
+				xs-12
+				sm6
+				md4
 				align-end 
 				flex-box 
 			>
@@ -83,6 +84,7 @@
 			</v-card-title>
 			<v-card-media 
 				:src="`http://image.tmdb.org/t/p/w780${clickedMovie.backdrop_path}`"
+				class="dialog-media"
 				height="700" 
 			/>
 			<v-card-title
@@ -147,6 +149,11 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (max-width: 999px) {
+  .dialog-media {
+    height: 300px !important;
+  }
+}
 ul {
   list-style: none;
 }
@@ -163,6 +170,9 @@ ul {
 }
 
 .card__title {
+  justify-content: center;
+}
+.v-card__title {
   justify-content: center;
 }
 </style>
