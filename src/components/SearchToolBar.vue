@@ -7,7 +7,13 @@
 			<v-list>
 				<v-list-tile>
 					<v-list-tile-title>
-						My List
+						<router-link 
+							:user-list="userList" 
+							to="/mylist" 
+							@deleteMovie="deleteMovie($event)"
+						>
+							My List
+						</router-link>
 					</v-list-tile-title>
 				</v-list-tile>
 			</v-list>
@@ -18,7 +24,12 @@
 			<v-toolbar-side-icon 
 				class="hidden-md-and-up"
 				@click.stop="sideNav = !sideNav"/>
-			<v-toolbar-title class="title mr-4 hidden-sm-and-down">Flick Pick</v-toolbar-title>
+			<v-toolbar-title 
+				class="title mr-4 hidden-sm-and-down"
+				@click="goHome"
+			>
+				Flick Pick
+			</v-toolbar-title>
 			<v-spacer/>
 			<v-autocomplete
 				v-model="model"
@@ -82,7 +93,12 @@
 			</v-autocomplete>
 			<v-spacer/>
 			<v-toolbar-items class="hidden-sm-and-down">
-				<v-btn flat>My List</v-btn>
+				<v-btn 
+					flat
+					@click="goToList"
+				>
+					My List
+				</v-btn>
 			</v-toolbar-items>
 		</v-toolbar>
 		<v-dialog 
@@ -193,6 +209,12 @@ export default {
     moreDetails(movie) {
       this.dialog = true
       this.clickedMovie = movie
+    },
+    goHome() {
+      this.$router.push('/')
+    },
+    goToList() {
+      this.$router.push('/mylist')
     }
   }
 }

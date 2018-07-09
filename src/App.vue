@@ -3,28 +3,28 @@
 		<v-app>
 			<SearchToolBar 
 				:user-list="userList"
+				@deleteMovie="deleteMovie($event)"
 				@sendMovie="toggleMovie($event)"
 			/>
-			<FeaturedMovies 
-				:user-list="userList" 
-				@sendMovie="toggleMovie($event)"
+			<router-view 
+				:user-list="userList"
+				@sendMovie="toggleMovie"
+				@deleteMovie="deleteMovie($event)"
 			/>
-			<UserList 
-				:user-list="userList" 
-				@deleteMovie="deleteMovie($event)"/>
 		</v-app>
 	</div>
 </template>
+
 <script>
 import FeaturedMovies from './components/FeaturedMovies'
 import SearchToolBar from './components/SearchToolBar'
-import UserList from './components/UserList'
+import MyList from './components/MyList'
 export default {
   name: 'App',
   components: {
     FeaturedMovies,
     SearchToolBar,
-    UserList
+    MyList
   },
   data() {
     return {

@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: 'UserList',
+  name: 'MyList',
   props: {
     userList: {
       default() {
