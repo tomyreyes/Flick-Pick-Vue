@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'MyList',
   props: {
@@ -27,6 +28,22 @@ export default {
       },
       type: Array
     }
+  },
+  data() {
+    return {
+      myList: []
+    }
+  },
+  created() {
+    this.userList.forEach(movieID => {
+      axios({
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/movie/${movieID}`,
+        params: {
+          api_key: '2d1610b0077610c43b2fe59ad827cfec'
+        }
+      }).then(response => this.myList.push(response.data))
+    })
   },
   methods: {
     deleteMovie(id) {

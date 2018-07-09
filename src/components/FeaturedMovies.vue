@@ -1,109 +1,110 @@
-<template><div class="featured">
-	<h1>This week's top movies</h1>
-	<v-container grid-list-md >
-		<v-layout
-			row
-			wrap>
-			<v-flex 
-				v-for="(movie, index ) in movieList" 
-				:key="index"
-				xs-12
-				sm6
-				md4
-				align-end 
-				flex-box 
-			>
-				<v-card >
-					<v-card-media
-						:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
-						class="poster" 
-						height="550" 
-						@click="moreDetails(movie)" 
-					/>
-					<v-card-actions>
-						<v-card-text>Score: {{ movie.vote_average }}</v-card-text>
+<template>
+	<div class="featured">
+		<h1>This week's top movies</h1>
+		<v-container grid-list-md >
+			<v-layout
+				row
+				wrap>
+				<v-flex 
+					v-for="(movie, index ) in movieList" 
+					:key="index"
+					xs-12
+					sm6
+					md4
+					align-end 
+					flex-box 
+				>
+					<v-card >
+						<v-card-media
+							:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
+							class="poster" 
+							height="550" 
+							@click="moreDetails(movie)" 
+						/>
+						<v-card-actions>
+							<v-card-text>Score: {{ movie.vote_average }}</v-card-text>
+							<v-icon 
+								v-if="userList.includes(movie.id)" 
+								dark 
+								color="red darken-1"   
+								@click="sendMovie(movie.id)">remove
+							</v-icon>
+							<v-icon 
+								v-else
+								color="green accent-3" 
+								dark 
+								@click="sendMovie(movie.id)"
+							>
+								add
+							</v-icon>
+							<v-btn 
+								small 
+								flat 
+								@click="moreDetails(movie)">
+								Details
+							</v-btn>
+						</v-card-actions>
+					</v-card>
+				</v-flex>
+			</v-layout>
+		</v-container>
+		<v-dialog 
+			v-if="clickedMovie !== null"
+			v-model="dialog"
+			width="1200"
+		>
+			<v-card>
+				<v-card-title
+					class="display-1"
+				>
+					{{ clickedMovie.title }}
+					<v-btn 
+						v-if="userList.includes(clickedMovie.id)"
+						icon
+						absolute
+						right
+						@click="sendMovie(clickedMovie.id)"
+					>
 						<v-icon 
-							v-if="userList.includes(movie.id)" 
 							dark 
-							color="red darken-1"   
-							@click="sendMovie(movie.id)">remove
-						</v-icon>
+							color="red darken-1">remove</v-icon>
+					</v-btn>
+					<v-btn
+						v-else
+						icon
+						absolute
+						right
+						@click="sendMovie(clickedMovie.id)"
+					> 
 						<v-icon 
-							v-else
-							color="green accent-3" 
 							dark 
-							@click="sendMovie(movie.id)"
-						>
+							color="green accent-3" >
 							add
 						</v-icon>
-						<v-btn 
-							small 
-							flat 
-							@click="moreDetails(movie)">
-							Details
-						</v-btn>
-					</v-card-actions>
-				</v-card>
-			</v-flex>
-		</v-layout>
-	</v-container>
-	<v-dialog 
-		v-if="clickedMovie !== null"
-		v-model="dialog"
-		width="1200"
-	>
-		<v-card>
-			<v-card-title
-				class="display-1"
-			>
-				{{ clickedMovie.title }}
-				<v-btn 
-					v-if="userList.includes(clickedMovie.id)"
-					icon
-					absolute
-					right
-					@click="sendMovie(clickedMovie.id)"
+					</v-btn>
+				</v-card-title>
+				<v-card-media 
+					:src="`http://image.tmdb.org/t/p/w780${clickedMovie.backdrop_path}`"
+					class="dialog-media"
+					height="700" 
+				/>
+				<v-card-title
+					class="title"
 				>
-					<v-icon 
-						dark 
-						color="red darken-1">remove</v-icon>
-				</v-btn>
-				<v-btn
-					v-else
-					icon
-					absolute
-					right
-					@click="sendMovie(clickedMovie.id)"
-				> 
-					<v-icon 
-						dark 
-						color="green accent-3" >
-						add
-					</v-icon>
-				</v-btn>
-			</v-card-title>
-			<v-card-media 
-				:src="`http://image.tmdb.org/t/p/w780${clickedMovie.backdrop_path}`"
-				class="dialog-media"
-				height="700" 
-			/>
-			<v-card-title
-				class="title"
-			>
-				Overview
-			</v-card-title>
-			<v-card-text
-				class="body-2"
-			>
-				{{ clickedMovie.overview }}
-			</v-card-text>
-			<v-card-title class="title cast">
-				Cast
-			</v-card-title>
-			<v-divider/>
-		</v-card>
-	</v-dialog>
-</div>
+					Overview
+				</v-card-title>
+				<v-card-text
+					class="body-2"
+				>
+					{{ clickedMovie.overview }}
+				</v-card-text>
+				<v-card-title class="title cast">
+					Cast
+				</v-card-title>
+				<v-divider/>
+			</v-card>
+		</v-dialog>
+	</div>
 </template>
 
 <script>
