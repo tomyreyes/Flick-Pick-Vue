@@ -7,7 +7,7 @@
 				justify-center 
 				row
 			>
-				<h4 v-if="myList.length === 0">Your list is empty</h4>
+				<h4 v-if="userList.length === 0">Your list is empty</h4>
 				<v-flex
 					v-for="(movie, index) in myList"
 					:key="index"
@@ -53,7 +53,7 @@
 						icon
 						absolute
 						right
-						@click="sendMovie(clickedMovie.id)"
+						@click="deleteMovie(clickedMovie.id)"
 					>
 						<v-icon 
 							dark 
@@ -86,7 +86,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'MyList',
   props: {
@@ -95,42 +94,19 @@ export default {
         return []
       },
       type: Array
+    },
+    myList: {
+      default() {
+        return []
+      },
+      type: Array
     }
   },
   data() {
     return {
-      myList: [],
       dialog: false,
       clickedMovie: null
     }
-  },
-  watch: {
-    userList(id) {
-      if (!this.userList.includes(id)) {
-        axios({
-          method: 'GET',
-          url: `https://api.themoviedb.org/3/movie/${id}`,
-          params: {
-            api_key: '2d1610b0077610c43b2fe59ad827cfec'
-          }
-        })
-          .then(response => this.myList.push(response.data))
-          .catch(err => console.log(err))
-      }
-    }
-  },
-  created() {
-    this.userList.forEach(movieID => {
-      axios({
-        method: 'GET',
-        url: `https://api.themoviedb.org/3/movie/${movieID}`,
-        params: {
-          api_key: '2d1610b0077610c43b2fe59ad827cfec'
-        }
-      })
-        .then(response => this.myList.push(response.data))
-        .catch(err => console.log(err))
-    })
   },
   methods: {
     sendMovie(id) {
@@ -138,6 +114,8 @@ export default {
     },
     deleteMovie(id) {
       this.$emit('deleteMovie', id)
+      let keepList = this.myList.filter(value => value.id !== id)
+      this.myList = keepList
     },
     moreDetails(movie) {
       this.dialog = true

@@ -8,9 +8,7 @@
 				<v-list-tile>
 					<v-list-tile-title>
 						<router-link 
-							:user-list="userList" 
 							to="/mylist" 
-							@deleteMovie="deleteMovie($event)"
 						>
 							My List
 						</router-link>

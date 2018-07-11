@@ -3,11 +3,13 @@
 		<v-app>
 			<SearchToolBar 
 				:user-list="userList"
+				:my-list="myList"
 				@deleteMovie="deleteMovie($event)"
 				@sendMovie="toggleMovie($event)"
 			/>
 			<router-view 
 				:user-list="userList"
+				:my-list="myList"
 				@sendMovie="toggleMovie"
 				@deleteMovie="deleteMovie($event)"
 			/>
@@ -16,6 +18,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import FeaturedMovies from './components/FeaturedMovies'
 import SearchToolBar from './components/SearchToolBar'
 import MyList from './components/MyList'
@@ -29,21 +32,35 @@ export default {
   data() {
     return {
       userList: [],
-      sideNav: false
+      sideNav: false,
+      myList: []
     }
   },
   methods: {
     toggleMovie(id) {
       if (!this.userList.includes(id)) {
-        this.userList.push(id)
+        this.addMovie(id)
       } else {
-        let keepList = this.userList.filter(value => value !== id)
-        this.userList = keepList
+        this.deleteMovie(id)
       }
     },
+    addMovie(id) {
+      this.userList.push(id)
+      axios({
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/movie/${id}`,
+        params: {
+          api_key: '2d1610b0077610c43b2fe59ad827cfec'
+        }
+      })
+        .then(response => this.myList.push(response.data))
+        .catch(err => console.log(err))
+    },
     deleteMovie(id) {
-      let keepList = this.userList.filter(value => value !== id)
-      this.userList = keepList
+      let userKeepList = this.userList.filter(value => value !== id)
+      this.userList = userKeepList
+      let myKeepList = this.myList.filter(value => value.id !== id)
+      this.myList = myKeepList
     }
   }
 }
