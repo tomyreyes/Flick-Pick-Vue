@@ -66,12 +66,32 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<style lang="scss">
+//variables
+$primary-font-color: #2c3e50;
+$title-margin: 30px;
+$subtitle-margin: 30px;
+
+#App {
+  color: $primary-font-color;
   text-align: center;
-  color: #2c3e50;
+}
+ul {
+  list-style: none;
+}
+.page-title {
+  margin-top: $title-margin;
+}
+.subtitle {
+  margin-top: $subtitle-margin;
+}
+.poster:hover {
+  opacity: 0.7;
+}
+.cast {
+  justify-content: left !important;
+}
+.v-card__title {
+  justify-content: center;
 }
 </style>

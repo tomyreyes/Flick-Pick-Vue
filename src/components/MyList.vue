@@ -1,12 +1,25 @@
 <template>
 	<div>
-		<h1>My List</h1>
-		<h3 v-if="userList.length === 0">Your list is empty</h3>
+		<h1 class="page-title">My List</h1>
+		<h3 
+			v-if="userList.length === 0"
+			class="subtitle" 
+		>
+			Your list is empty
+		</h3>
 		<v-btn 
-			v-else-if="userList.length !== 0 || randomizeMovie === null" 
+			v-else-if="userList.length !== 0 && randomMovie === null" 
+			color="success"
 			@click="randomizeMovie"
 		>
-			Randomize
+			Pick a movie
+		</v-btn>
+		<v-btn
+			v-else
+			color="error"
+			@click="undoRandomize"
+		>
+			Undo
 		</v-btn>
 		<v-container grid-list-md>
 			<v-layout
@@ -14,12 +27,16 @@
 				align-center 
 				justify-center 
 				row
+				wrap
 			>
-				
 				<v-flex
 					v-for="(movie, index) in myList"
 					:key="index"
-					xs4
+					xs-12
+					sm6
+					md4
+					lg3
+					xl3
 					flex-box
 				>
 					<v-card >
@@ -165,14 +182,12 @@ export default {
       this.clickedMovie = movie
     },
     randomizeMovie() {
-      console.log('trigger')
       const randomArrayIndex = Math.floor(Math.random() * this.myList.length)
       this.randomMovie = this.myList[randomArrayIndex]
+    },
+    undoRandomize() {
+      this.randomMovie = null
     }
   }
 }
 </script>
-
-//randomizer 
-Need to get a random index value based on myList arr length
-from this index we need to choose a movie based on this index value. 

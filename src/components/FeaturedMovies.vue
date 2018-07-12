@@ -1,6 +1,6 @@
 <template>
-	<div class="featured">
-		<h1>This week's top movies</h1>
+	<div>
+		<h1 class="page-title">This week's top movies</h1>
 		<v-container grid-list-md >
 			<v-layout
 				row
@@ -11,6 +11,8 @@
 					xs-12
 					sm6
 					md4
+					lg3
+					xl3
 					align-end 
 					flex-box 
 				>
@@ -154,26 +156,5 @@ export default {
   .dialog-media {
     height: 300px !important;
   }
-}
-ul {
-  list-style: none;
-}
-.featured {
-  padding-top: 30px;
-}
-
-.poster:hover {
-  opacity: 0.7;
-}
-
-.cast {
-  justify-content: left !important;
-}
-
-.card__title {
-  justify-content: center;
-}
-.v-card__title {
-  justify-content: center;
 }
 </style>
