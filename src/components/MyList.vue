@@ -23,10 +23,10 @@
 		>
 			Undo
 		</v-btn>
-		<transition name="fade">
-			<h3 v-if="showMessage">
+		<transition name="fade-title">
+			<h2 v-if="showMessage">
 				Tonight you are watching
-			</h3>
+			</h2>
 		</transition>
 		<v-container grid-list-md>
 			<transition name="fade">
@@ -219,7 +219,9 @@ export default {
     undoRandomize() {
       this.randomMovie = null
       this.showMessage = false
-      this.showList = true
+      setTimeout(() => {
+        this.showList = true
+      }, 1000)
     }
   }
 }
@@ -232,24 +234,23 @@ export default {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
-.zoom-in-enter-active {
-  animation: zoom 0.5s;
+.fade-title-enter-active,
+.fade-title-leave-active {
+  transition: opacity 1.4s;
 }
-.bounce-leave-active {
-  animation: zoom 0.5s reverse;
+.fade-title-enter,
+.fade-title-leave-to {
+  opacity: 0;
+}
+.zoom-in-enter-active {
+  animation: zoom 0.5s ease-in;
+}
+.zoom-in-leave-active {
+  animation: zoom 0.5s reverse ease-in;
 }
 @keyframes zoom {
   0% {
     transform: scale(0);
-  }
-  25% {
-    transofrm: scale(0.25);
-  }
-  50% {
-    transform: scale(0.5);
-  }
-  75% {
-    transform: scale(0.75);
   }
   100% {
     transform: scale(1);
