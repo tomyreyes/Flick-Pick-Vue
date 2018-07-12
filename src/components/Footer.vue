@@ -19,7 +19,7 @@
 				>
 					About
 				</v-btn>
-				<v-space/>
+				<v-spacer/>
 				<v-btn
 					flat
 				>

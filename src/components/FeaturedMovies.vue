@@ -1,5 +1,18 @@
 <template>
 	<div>
+		<v-jumbotron
+			height="600px"
+			dark
+			class="responsive-image"
+		>
+			<v-container fill-height>
+				<v-layout align-center>
+					<v-flex text-xs-center>
+						<h4 class="display-2">End the movie night struggle</h4>
+					</v-flex>
+				</v-layout>
+			</v-container>
+		</v-jumbotron>
 		<h1 class="page-title">This week's top movies</h1>
 		<v-container grid-list-md >
 			<v-layout
@@ -172,5 +185,12 @@ export default {
   .dialog-media {
     height: 300px !important;
   }
+}
+
+.responsive-image {
+  background: url('./../assets/movie-theatre.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
 }
 </style>
