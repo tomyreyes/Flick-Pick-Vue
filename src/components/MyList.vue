@@ -23,10 +23,15 @@
 		>
 			Undo
 		</v-btn>
+		<transition name="fade">
+			<h3 v-if="showMessage">
+				Tonight you are watching
+			</h3>
+		</transition>
 		<v-container grid-list-md>
 			<transition name="fade">
 				<v-layout
-					v-if="randomMovie === null"
+					v-if="showList"
 					key="wrapper"
 					align-center 
 					justify-center 
@@ -79,9 +84,10 @@
 					</v-flex>
 				</v-layout>
 			</transition>
-			<transition>
+			<transition name="zoom-in">
 				<v-layout
 					v-if="randomMovie !== null"
+					key="wrapper"
 					align-center 
 					justify-center 
 					row
@@ -184,7 +190,9 @@ export default {
     return {
       dialog: false,
       clickedMovie: null,
-      randomMovie: null
+      randomMovie: null,
+      showList: true,
+      showMessage: false
     }
   },
   methods: {
@@ -202,10 +210,16 @@ export default {
     },
     randomizeMovie() {
       const randomArrayIndex = Math.floor(Math.random() * this.myList.length)
-      this.randomMovie = this.myList[randomArrayIndex]
+      this.showList = false
+      this.showMessage = true
+      setTimeout(() => {
+        this.randomMovie = this.myList[randomArrayIndex]
+      }, 2000)
     },
     undoRandomize() {
       this.randomMovie = null
+      this.showMessage = false
+      this.showList = true
     }
   }
 }
@@ -217,5 +231,28 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+.zoom-in-enter-active {
+  animation: zoom 0.5s;
+}
+.bounce-leave-active {
+  animation: zoom 0.5s reverse;
+}
+@keyframes zoom {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transofrm: scale(0.25);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  75% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 </style>
