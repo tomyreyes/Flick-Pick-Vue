@@ -24,89 +24,97 @@
 			Undo
 		</v-btn>
 		<v-container grid-list-md>
-			<v-layout
-				v-if="randomMovie === null"
-				align-center 
-				justify-center 
-				row
-				wrap
-			>
-				<v-flex
-					v-for="(movie, index) in myList"
-					:key="index"
-					xs-12
-					sm6
-					md4
-					lg3
-					xl3
-					flex-box
+			<transition name="fade">
+				<v-layout
+					v-if="randomMovie === null"
+					key="wrapper"
+					align-center 
+					justify-center 
+					row
+					wrap
 				>
-					<v-card >
-						<v-card-media
-							:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
-							class="poster" 
-							height="550" 
-							@click="moreDetails(movie)" 
-						/>
-						<v-card-actions>
-							<v-card-text>Score: {{ movie.vote_average }}</v-card-text>
-							<v-btn 
-								icon
-								ripple
-								@click="sendMovie(movie.id)"
-							>
+					<v-flex
+						v-for="(movie, index) in myList"
+						:key="index"
+						xs-12
+						sm6
+						md4
+						lg3
+						xl3
+						flex-box
+					>
+						<v-card >
+							<v-card-media
+								:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
+								class="poster" 
+								height="550" 
+								@click="moreDetails(movie)" 
+							/>
+							<v-card-actions>
+								<v-card-text>Score: {{ movie.vote_average }}</v-card-text>
+								<v-btn 
+									key="remove-btn"
+									icon
+									ripple
+									@click="sendMovie(movie.id)"
+								>
+									<v-icon 
+										key="remove-icon"
+										dark 
+										color="red darken-1"
+									>
+										remove
+									</v-icon>
+								</v-btn>
+								<v-btn 
+									key="details-btn"
+									small 
+									flat 
+									ripple
+									@click="moreDetails(movie)">
+									Details
+								</v-btn>
+							</v-card-actions>
+						</v-card>
+					</v-flex>
+				</v-layout>
+			</transition>
+			<transition>
+				<v-layout
+					v-if="randomMovie !== null"
+					align-center 
+					justify-center 
+					row
+				>
+					<v-flex
+						xs4
+						flex-box
+					>
+						<v-card >
+							<v-card-media
+								:src="`http://image.tmdb.org/t/p/w342${randomMovie.poster_path}`" 
+								class="poster" 
+								height="550" 
+								@click="moreDetails(randomMovie)" 
+							/>
+							<v-card-actions>
+								<v-card-text>Score: {{ randomMovie.vote_average }}</v-card-text>
 								<v-icon 
 									dark 
 									color="red darken-1"   
-								>
-									remove
+									@click="sendMovie(randomMovie.id)">remove
 								</v-icon>
-							</v-btn>
-							<v-btn 
-								small 
-								flat 
-								ripple
-								@click="moreDetails(movie)">
-								Details
-							</v-btn>
-						</v-card-actions>
-					</v-card>
-				</v-flex>
-			</v-layout>
-			<v-layout
-				v-else
-				align-center 
-				justify-center 
-				row
-			>
-				<v-flex
-					xs4
-					flex-box
-				>
-					<v-card >
-						<v-card-media
-							:src="`http://image.tmdb.org/t/p/w342${randomMovie.poster_path}`" 
-							class="poster" 
-							height="550" 
-							@click="moreDetails(randomMovie)" 
-						/>
-						<v-card-actions>
-							<v-card-text>Score: {{ randomMovie.vote_average }}</v-card-text>
-							<v-icon 
-								dark 
-								color="red darken-1"   
-								@click="sendMovie(randomMovie.id)">remove
-							</v-icon>
-							<v-btn 
-								small 
-								flat 
-								@click="moreDetails(randomMovie)">
-								Details
-							</v-btn>
-						</v-card-actions>
-					</v-card>
-				</v-flex>
-			</v-layout>
+								<v-btn 
+									small 
+									flat 
+									@click="moreDetails(randomMovie)">
+									Details
+								</v-btn>
+							</v-card-actions>
+						</v-card>
+					</v-flex>
+				</v-layout>
+			</transition>
 		</v-container>
 		<v-dialog 
 			v-if="clickedMovie !== null"
@@ -202,3 +210,12 @@ export default {
   }
 }
 </script>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+</style>
