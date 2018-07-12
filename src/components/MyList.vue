@@ -1,13 +1,21 @@
 <template>
 	<div>
 		<h1>My List</h1>
+		<h3 v-if="userList.length === 0">Your list is empty</h3>
+		<v-btn 
+			v-else-if="userList.length !== 0 || randomizeMovie === null" 
+			@click="randomizeMovie"
+		>
+			Randomize
+		</v-btn>
 		<v-container grid-list-md>
-			<v-layout 
+			<v-layout
+				v-if="randomMovie === null"
 				align-center 
 				justify-center 
 				row
 			>
-				<h4 v-if="userList.length === 0">Your list is empty</h4>
+				
 				<v-flex
 					v-for="(movie, index) in myList"
 					:key="index"
@@ -32,6 +40,40 @@
 								small 
 								flat 
 								@click="moreDetails(movie)">
+								Details
+							</v-btn>
+						</v-card-actions>
+					</v-card>
+				</v-flex>
+			</v-layout>
+			<v-layout
+				v-else
+				align-center 
+				justify-center 
+				row
+			>
+				<v-flex
+					xs4
+					flex-box
+				>
+					<v-card >
+						<v-card-media
+							:src="`http://image.tmdb.org/t/p/w342${randomMovie.poster_path}`" 
+							class="poster" 
+							height="550" 
+							@click="moreDetails(randomMovie)" 
+						/>
+						<v-card-actions>
+							<v-card-text>Score: {{ randomMovie.vote_average }}</v-card-text>
+							<v-icon 
+								dark 
+								color="red darken-1"   
+								@click="sendMovie(randomMovie.id)">remove
+							</v-icon>
+							<v-btn 
+								small 
+								flat 
+								@click="moreDetails(randomMovie)">
 								Details
 							</v-btn>
 						</v-card-actions>
@@ -105,7 +147,8 @@ export default {
   data() {
     return {
       dialog: false,
-      clickedMovie: null
+      clickedMovie: null,
+      randomMovie: null
     }
   },
   methods: {
@@ -120,7 +163,16 @@ export default {
     moreDetails(movie) {
       this.dialog = true
       this.clickedMovie = movie
+    },
+    randomizeMovie() {
+      console.log('trigger')
+      const randomArrayIndex = Math.floor(Math.random() * this.myList.length)
+      this.randomMovie = this.myList[randomArrayIndex]
     }
   }
 }
 </script>
+
+//randomizer 
+Need to get a random index value based on myList arr length
+from this index we need to choose a movie based on this index value. 
