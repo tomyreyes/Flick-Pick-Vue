@@ -25,20 +25,34 @@
 						/>
 						<v-card-actions>
 							<v-card-text>Score: {{ movie.vote_average }}</v-card-text>
-							<v-icon 
+							<v-btn 
 								v-if="userList.includes(movie.id)" 
-								dark 
-								color="red darken-1"   
-								@click="sendMovie(movie.id)">remove
-							</v-icon>
-							<v-icon 
-								v-else
-								color="green accent-3" 
-								dark 
+								icon
+								ripple
 								@click="sendMovie(movie.id)"
 							>
-								add
-							</v-icon>
+								<v-icon 
+									dark 
+									color="red darken-1"   
+								>
+									remove
+								</v-icon>
+							</v-btn>
+							<v-btn
+								v-else
+								icon
+								ripple
+								@click="sendMovie(movie.id)"
+							>
+								<v-icon 
+									
+									color="green accent-3" 
+									dark 
+									
+								>
+									add
+								</v-icon>
+							</v-btn>
 							<v-btn 
 								small 
 								flat 
@@ -65,6 +79,7 @@
 						icon
 						absolute
 						right
+						ripple
 						@click="sendMovie(clickedMovie.id)"
 					>
 						<v-icon 
@@ -76,6 +91,7 @@
 						icon
 						absolute
 						right
+						ripple
 						@click="sendMovie(clickedMovie.id)"
 					> 
 						<v-icon 

@@ -10,6 +10,7 @@
 		<v-btn 
 			v-else-if="userList.length !== 0 && randomMovie === null" 
 			color="success"
+			ripple
 			@click="randomizeMovie"
 		>
 			Pick a movie
@@ -17,6 +18,7 @@
 		<v-btn
 			v-else
 			color="error"
+			ripple
 			@click="undoRandomize"
 		>
 			Undo
@@ -48,14 +50,22 @@
 						/>
 						<v-card-actions>
 							<v-card-text>Score: {{ movie.vote_average }}</v-card-text>
-							<v-icon 
-								dark 
-								color="red darken-1"   
-								@click="sendMovie(movie.id)">remove
-							</v-icon>
+							<v-btn 
+								icon
+								ripple
+								@click="sendMovie(movie.id)"
+							>
+								<v-icon 
+									dark 
+									color="red darken-1"   
+								>
+									remove
+								</v-icon>
+							</v-btn>
 							<v-btn 
 								small 
 								flat 
+								ripple
 								@click="moreDetails(movie)">
 								Details
 							</v-btn>
@@ -112,6 +122,7 @@
 						icon
 						absolute
 						right
+						ripple
 						@click="deleteMovie(clickedMovie.id)"
 					>
 						<v-icon 

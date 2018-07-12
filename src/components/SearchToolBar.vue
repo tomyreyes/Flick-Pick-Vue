@@ -67,6 +67,7 @@
 							icon
 							absolute
 							right
+							ripple
 							@click="sendMovie(item.id)"
 						>
 							<v-icon 
@@ -78,6 +79,7 @@
 							icon
 							absolute
 							right
+							ripple
 							@click="sendMovie(item.id)"
 						> 
 							<v-icon 
@@ -114,6 +116,7 @@
 						icon
 						absolute
 						right
+						ripple
 						@click="sendMovie(clickedMovie.id)"
 					>
 						<v-icon 
@@ -125,6 +128,7 @@
 						icon
 						absolute
 						right
+						ripple
 						@click="sendMovie(clickedMovie.id)"
 					> 
 						<v-icon 
