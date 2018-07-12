@@ -10,8 +10,8 @@
 					:key="index"
 					xs-12
 					sm6
-					md4
-					lg3
+					md6
+					lg4
 					xl3
 					align-end 
 					flex-box 

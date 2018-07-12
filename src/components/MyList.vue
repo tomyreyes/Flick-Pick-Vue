@@ -15,16 +15,11 @@
 		>
 			Pick a movie
 		</v-btn>
-		<v-btn
-			v-else
-			color="error"
-			ripple
-			@click="undoRandomize"
-		>
-			Undo
-		</v-btn>
 		<transition name="fade-title">
-			<h2 v-if="showMessage">
+			<h2 
+				v-if="showMessage"
+				class="subtitle"
+			>
 				Tonight you are watching
 			</h2>
 		</transition>
@@ -43,8 +38,8 @@
 						:key="index"
 						xs-12
 						sm6
-						md4
-						lg3
+						md6
+						lg4
 						xl3
 						flex-box
 					>
@@ -94,6 +89,11 @@
 				>
 					<v-flex
 						xs4
+						xs-12
+						sm6
+						md6
+						lg4
+						xl3
 						flex-box
 					>
 						<v-card >
@@ -122,6 +122,14 @@
 				</v-layout>
 			</transition>
 		</v-container>
+		<v-btn
+			v-if="randomMovie !== null"
+			color="error"
+			ripple
+			@click="undoRandomize"
+		>
+			Return My List 
+		</v-btn>
 		<v-dialog 
 			v-if="clickedMovie !== null"
 			v-model="dialog"
@@ -165,7 +173,6 @@
 				<v-divider/>
 			</v-card>
 		</v-dialog>
-		
 	</div>
 </template>
 
@@ -226,6 +233,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {

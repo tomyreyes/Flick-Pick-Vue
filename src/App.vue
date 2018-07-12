@@ -13,19 +13,24 @@
 				@sendMovie="toggleMovie"
 				@deleteMovie="deleteMovie($event)"
 			/>
+			<Footer id="Footer"/>
 		</v-app>
 	</div>
 </template>
 
 <script>
 import axios from 'axios'
+import About from './components/About'
 import FeaturedMovies from './components/FeaturedMovies'
+import Footer from './components/Footer'
 import SearchToolBar from './components/SearchToolBar'
 import MyList from './components/MyList'
 export default {
   name: 'App',
   components: {
+    About,
     FeaturedMovies,
+    Footer,
     SearchToolBar,
     MyList
   },
@@ -75,6 +80,17 @@ $subtitle-margin: 30px;
 #App {
   color: $primary-font-color;
   text-align: center;
+}
+
+#Footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+body {
+  background-color: black;
 }
 ul {
   list-style: none;

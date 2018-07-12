@@ -8,12 +8,21 @@
 				<v-list-tile>
 					<v-list-tile-title>
 						<router-link 
+							to="/about" 
+						>
+							About
+						</router-link>
+					</v-list-tile-title>
+				</v-list-tile>
+				<v-list-tile>
+					<v-list-tile-title>
+						<router-link 
 							to="/mylist" 
 						>
 							My List
 						</router-link>
 					</v-list-tile-title>
-				</v-list-tile>
+				</v-list-tile>>
 			</v-list>
 		</v-navigation-drawer>
 		<v-toolbar
@@ -93,6 +102,13 @@
 			</v-autocomplete>
 			<v-spacer/>
 			<v-toolbar-items class="hidden-sm-and-down">
+				<v-btn 
+					flat
+					@click="goToAbout"
+				>
+					About
+				</v-btn>
+				<v-spacer/>
 				<v-btn 
 					flat
 					@click="goToList"
@@ -217,6 +233,9 @@ export default {
     },
     goToList() {
       this.$router.push('/mylist')
+    },
+    goToAbout() {
+      this.$router.push('/about')
     }
   }
 }
