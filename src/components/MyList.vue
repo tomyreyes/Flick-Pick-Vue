@@ -250,10 +250,10 @@ export default {
 }
 @keyframes zoom {
   0% {
-    transform: scale(0);
+    transform: rotate(0) scale(0);
   }
   100% {
-    transform: scale(1);
+    transform: rotate(360deg) scale(1);
   }
 }
 </style>
