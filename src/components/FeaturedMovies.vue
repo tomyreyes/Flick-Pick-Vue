@@ -15,25 +15,21 @@
 		</v-jumbotron>
 		<h1 class="page-title">This week's top movies</h1>
 		<v-container grid-list-md >
-			<v-layout
-				row
-				wrap>
-				<v-flex 
-					v-for="(movie, index ) in movieList" 
-					:key="index"
-					xs-12
-					sm6
-					md6
-					lg4
-					xl3
-					align-end 
-					flex-box 
+			<carousel 
+				:per-page-custom="[[480, 2], [768, 3], [960,4], [1264, 5]]"
+				:navigation-enabled="true"
+				:scroll-per-page="false"
+				:loop="true"
+			>
+				<slide 
+					v-for="(movie, index ) in movieList"
+					:key="index" 
 				>
 					<v-card class="feature-layout">
 						<v-card-media
 							:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
 							class="poster" 
-							height="500" 
+							height="342" 
 							@click="moreDetails(movie)" 
 						/>
 						<v-card-actions>
@@ -74,9 +70,10 @@
 							</v-btn>
 						</v-card-actions>
 					</v-card>
-				</v-flex>
-			</v-layout>
+				</slide>
+			</carousel>		
 		</v-container>
+				
 		<v-dialog 
 			v-if="clickedMovie !== null"
 			v-model="dialog"
@@ -140,9 +137,14 @@
 
 <script>
 import axios from 'axios'
+import { Carousel, Slide } from 'vue-carousel'
 
 export default {
   name: 'FeaturedMovies',
+  components: {
+    Carousel,
+    Slide
+  },
   props: {
     userList: {
       default() {
@@ -191,6 +193,9 @@ export default {
   background: url('./../assets/movie-theatre.jpg') no-repeat;
   background-size: cover;
   background-position: center;
-  width: 100%;
+  width: 100;
 }
+/* .feature-layout {
+  width: 342px;
+} */
 </style>
