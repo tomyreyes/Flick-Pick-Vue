@@ -244,7 +244,7 @@ export default {
 }
 .fade-title-enter-active,
 .fade-title-leave-active {
-  transition: opacity 1.4s;
+  transition: opacity 2s;
 }
 .fade-title-enter,
 .fade-title-leave-to {

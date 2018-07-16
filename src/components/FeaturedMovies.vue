@@ -29,11 +29,11 @@
 					align-end 
 					flex-box 
 				>
-					<v-card >
+					<v-card class="feature-layout">
 						<v-card-media
 							:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
 							class="poster" 
-							height="550" 
+							height="500" 
 							@click="moreDetails(movie)" 
 						/>
 						<v-card-actions>

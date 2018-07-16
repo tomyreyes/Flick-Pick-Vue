@@ -1,13 +1,11 @@
 <template>
 	<v-footer
-		class="black"
 		height="auto"
 	>
 		<v-card
+			class="flex grey darken-4"
 			dark
-			class="flex black"
 			flat
-			
 			tile
 		>
 			<v-card-title class="justify-center">
@@ -35,3 +33,10 @@ export default {
   name: 'Footer'
 }
 </script>
+<style>
+.footer {
+  background-color: #212121;
+}
+</style>
+
+

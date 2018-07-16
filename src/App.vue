@@ -7,9 +7,10 @@
 				@deleteMovie="deleteMovie($event)"
 				@sendMovie="toggleMovie($event)"
 			/>
-			<router-view 
+			<router-view
 				:user-list="userList"
 				:my-list="myList"
+				class="Pages" 
 				@sendMovie="toggleMovie"
 				@deleteMovie="deleteMovie($event)"
 			/>
@@ -76,6 +77,7 @@ export default {
 $primary-font-color: #2c3e50;
 $title-margin: 30px;
 $subtitle-margin: 30px;
+$main-color: #212121;
 
 #App {
   color: $primary-font-color;
@@ -87,19 +89,23 @@ $subtitle-margin: 30px;
   bottom: 0;
   left: 0;
   width: 100%;
+  background-color: $main-color;
+}
+.Pages {
+  margin-bottom: 70px;
 }
 
 body {
-  background-color: black;
+  background-color: $main-color;
 }
 ul {
   list-style: none;
 }
 .page-title {
-  margin-top: $title-margin;
+  margin: $title-margin 0;
 }
 .subtitle {
-  margin-top: $subtitle-margin;
+  margin: $subtitle-margin 0;
 }
 .poster:hover {
   opacity: 0.7;
