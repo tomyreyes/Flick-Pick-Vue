@@ -13,19 +13,20 @@
 				</v-layout>
 			</v-container>
 		</v-jumbotron>
+		<h1>carousel</h1>
 		<h1 class="page-title">This week's top movies</h1>
 		<v-container grid-list-md >
-			<carousel 
-				:per-page-custom="[[480, 2], [768, 3], [960,4], [1264, 5]]"
-				:navigation-enabled="true"
-				:scroll-per-page="false"
-				:loop="true"
-			>
-				<slide 
-					v-for="(movie, index ) in movieList"
-					:key="index" 
+			<tiny-slider 
+				:mouse-drag="true" 
+				:loop="false" 
+				items="1" 
+				gutter="20">
+				
+				<div
+					v-for="(movie, index ) in movieList" 
+					:key="index"
 				>
-					<v-card class="feature-layout">
+					<v-card >
 						<v-card-media
 							:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
 							class="poster" 
@@ -70,8 +71,8 @@
 							</v-btn>
 						</v-card-actions>
 					</v-card>
-				</slide>
-			</carousel>		
+				</div>
+			</tiny-slider>
 		</v-container>
 				
 		<v-dialog 
@@ -137,13 +138,12 @@
 
 <script>
 import axios from 'axios'
-import { Carousel, Slide } from 'vue-carousel'
+import VueTinySlider from 'vue-tiny-slider'
 
 export default {
   name: 'FeaturedMovies',
   components: {
-    Carousel,
-    Slide
+    'tiny-slider': VueTinySlider
   },
   props: {
     userList: {
@@ -195,7 +195,14 @@ export default {
   background-position: center;
   width: 100;
 }
-/* .feature-layout {
-  width: 342px;
-} */
+.tns-item {
+  font-size: 3rem;
+  font-family: Arial;
+  text-align: center;
+  padding: 2em;
+  background: #fafafb;
+}
+.tns-item:nth-child(odd) {
+  background: #c8e1ff;
+}
 </style>

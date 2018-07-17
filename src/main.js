@@ -7,7 +7,6 @@ import About from './components/About.vue'
 import FeaturedMovies from './components/FeaturedMovies.vue'
 import MyList from './components/MyList.vue'
 
-
 Vue.use(Vuetify)
 Vue.use(VueRouter)
 Vue.config.productionTip = false
