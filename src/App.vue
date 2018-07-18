@@ -14,7 +14,12 @@
 				@sendMovie="toggleMovie"
 				@deleteMovie="deleteMovie($event)"
 			/>
-			<Footer id="Footer"/>
+			<Footer 
+				id="Footer" 
+				class="hidden-sm-and-down"
+			/>
+			<BottomNav
+				class="hidden-md-and-up"/>
 		</v-app>
 	</div>
 </template>
@@ -22,14 +27,17 @@
 <script>
 import axios from 'axios'
 import About from './components/About'
+import BottomNav from './components/BottomNav'
 import FeaturedMovies from './components/FeaturedMovies'
 import Footer from './components/Footer'
 import SearchToolBar from './components/SearchToolBar'
 import MyList from './components/MyList'
+
 export default {
   name: 'App',
   components: {
     About,
+    BottomNav,
     FeaturedMovies,
     Footer,
     SearchToolBar,

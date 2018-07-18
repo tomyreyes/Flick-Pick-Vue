@@ -1,30 +1,5 @@
 <template>
 	<div>
-		<v-navigation-drawer 
-			v-model="sideNav" 
-			fixed 
-			app>
-			<v-list>
-				<v-list-tile>
-					<v-list-tile-title>
-						<router-link 
-							to="/about" 
-						>
-							About
-						</router-link>
-					</v-list-tile-title>
-				</v-list-tile>
-				<v-list-tile>
-					<v-list-tile-title>
-						<router-link 
-							to="/mylist" 
-						>
-							My List
-						</router-link>
-					</v-list-tile-title>
-				</v-list-tile>>
-			</v-list>
-		</v-navigation-drawer>
 		<v-toolbar
 			dark	
 		>
@@ -104,16 +79,16 @@
 			<v-toolbar-items class="hidden-sm-and-down">
 				<v-btn 
 					flat
-					@click="goToAbout"
+					@click="goToList"
 				>
-					About
+					My List
 				</v-btn>
 				<v-spacer/>
 				<v-btn 
 					flat
-					@click="goToList"
+					@click="goToAbout"
 				>
-					My List
+					About
 				</v-btn>
 			</v-toolbar-items>
 		</v-toolbar>
