@@ -13,16 +13,15 @@
 				</v-layout>
 			</v-container>
 		</v-jumbotron>
-		<h1>carousel</h1>
 		<h1 class="page-title">This week's top movies</h1>
 		<v-container grid-list-md >
-			<tiny-slider 
-				:mouse-drag="true" 
-				:loop="false" 
-				items="1" 
-				gutter="20">
-				
-				<div
+			<carousel
+				:mouse-drag="false"
+				:navigation-enabled="true"
+				:scroll-per-page="false"
+				:per-page-custom="[[480, 2], [768, 3], [960,3], [1264, 5], [1904, 6]]"
+			>
+				<slide
 					v-for="(movie, index ) in movieList" 
 					:key="index"
 				>
@@ -55,10 +54,8 @@
 								@click="sendMovie(movie.id)"
 							>
 								<v-icon 
-									
 									color="green accent-3" 
 									dark 
-									
 								>
 									add
 								</v-icon>
@@ -71,10 +68,9 @@
 							</v-btn>
 						</v-card-actions>
 					</v-card>
-				</div>
-			</tiny-slider>
+				</slide>
+			</carousel>
 		</v-container>
-				
 		<v-dialog 
 			v-if="clickedMovie !== null"
 			v-model="dialog"
@@ -138,12 +134,13 @@
 
 <script>
 import axios from 'axios'
-import VueTinySlider from 'vue-tiny-slider'
+import { Carousel, Slide } from 'vue-carousel'
 
 export default {
   name: 'FeaturedMovies',
   components: {
-    'tiny-slider': VueTinySlider
+    Carousel,
+    Slide
   },
   props: {
     userList: {
