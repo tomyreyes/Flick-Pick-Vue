@@ -16,19 +16,21 @@
 		<h1 class="page-title">This week's top movies</h1>
 		<v-container grid-list-md >
 			<carousel
+				:loop="true"
 				:mouse-drag="false"
 				:navigation-enabled="true"
 				:scroll-per-page="false"
-				:per-page-custom="[[480, 2], [768, 3], [960,3], [1264, 5], [1904, 6]]"
+				:per-page-custom="[[360, 1],[480, 2], [700, 3], [900,4], [1264, 5], [1904, 6]]"
 			>
 				<slide
 					v-for="(movie, index ) in movieList" 
 					:key="index"
+					class="carousel-card"
 				>
 					<v-card >
 						<v-card-media
 							:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
-							class="poster" 
+							:contain="true"
 							height="342" 
 							@click="moreDetails(movie)" 
 						/>
@@ -185,7 +187,6 @@ export default {
     height: 300px !important;
   }
 }
-
 .responsive-image {
   background: url('./../assets/movie-theatre.jpg') no-repeat;
   background-size: cover;

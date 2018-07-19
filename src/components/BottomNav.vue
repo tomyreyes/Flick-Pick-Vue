@@ -1,6 +1,5 @@
 <template>
 	<v-bottom-nav
-		:active.sync="bottomNav"
 		:value="true"
 		absolute
 		color="transparent"
@@ -36,7 +35,7 @@
 
 <script>
 export default {
-  name: 'BottonNav',
+  name: 'BottomNav',
   methods: {
     goHome() {
       this.$router.push('/')
