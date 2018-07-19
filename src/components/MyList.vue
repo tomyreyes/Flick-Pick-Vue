@@ -46,8 +46,8 @@
 						<v-card >
 							<v-card-media
 								:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
-								class="poster" 
 								height="550" 
+								class="poster"
 								@click="moreDetails(movie)" 
 							/>
 							<v-card-actions>
@@ -88,7 +88,6 @@
 					row
 				>
 					<v-flex
-						xs4
 						xs-12
 						sm6
 						md6
@@ -98,7 +97,7 @@
 					>
 						<v-card >
 							<v-card-media
-								:src="`http://image.tmdb.org/t/p/w342${randomMovie.poster_path}`" 
+								:src="`http://image.tmdb.org/t/p/w342${randomMovie.poster_path}`"
 								class="poster" 
 								height="550" 
 								@click="moreDetails(randomMovie)" 

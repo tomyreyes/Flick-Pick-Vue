@@ -13,7 +13,7 @@
 				</v-layout>
 			</v-container>
 		</v-jumbotron>
-		<h1 class="page-title">This week's top movies</h1>
+		<h1 class="page-title">This Week's Featured Movies</h1>
 		<v-container grid-list-md >
 			<carousel
 				:loop="true"
@@ -23,7 +23,7 @@
 				:per-page-custom="[[360, 1],[480, 2], [700, 3], [900,4], [1264, 5], [1904, 6]]"
 			>
 				<slide
-					v-for="(movie, index ) in movieList" 
+					v-for="(movie, index ) in featureList" 
 					:key="index"
 					class="carousel-card"
 				>
@@ -31,6 +31,7 @@
 						<v-card-media
 							:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
 							:contain="true"
+							class="poster"
 							height="342" 
 							@click="moreDetails(movie)" 
 						/>
@@ -154,7 +155,7 @@ export default {
   },
   data() {
     return {
-      movieList: null,
+      featureList: null,
       dialog: false,
       clickedMovie: null
     }
@@ -162,12 +163,12 @@ export default {
   created() {
     axios({
       method: 'GET',
-      url: 'https://api.themoviedb.org/4/list/10',
+      url: 'https://api.themoviedb.org/4/list/7',
       params: {
         page: 1,
         api_key: '2d1610b0077610c43b2fe59ad827cfec'
       }
-    }).then(response => (this.movieList = response.data.results))
+    }).then(response => (this.featureList = response.data.results))
   },
   methods: {
     sendMovie(id) {

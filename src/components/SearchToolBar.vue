@@ -3,15 +3,18 @@
 		<v-toolbar
 			dark	
 		>
-			<v-toolbar-side-icon 
-				class="hidden-md-and-up"
-				@click.stop="sideNav = !sideNav"/>
-			<v-toolbar-title 
-				class="title mr-4 hidden-sm-and-down"
-				@click="goHome"
-			>
-				Flick Pick
-			</v-toolbar-title>
+			<router-link to="/">
+				<img 
+					id="desktop-logo"
+					class="hidden-sm-and-down" 
+					src="./../assets/flick-pick-desktop.png"
+				>
+				<img 
+					id="mobile-logo"
+					class="hidden-md-and-up"
+					src="./../assets/flick-pick-mobile.png"
+				>
+			</router-link>
 			<v-spacer/>
 			<v-autocomplete
 				v-model="model"
@@ -79,16 +82,19 @@
 			<v-toolbar-items class="hidden-sm-and-down">
 				<v-btn 
 					flat
-					@click="goToList"
+					@click="goToAbout"
 				>
-					My List
+					About
 				</v-btn>
 				<v-spacer/>
 				<v-btn 
 					flat
-					@click="goToAbout"
+					@click="goToList"
 				>
-					About
+					<v-chip>
+						{{ userList.length }}
+					</v-chip>
+					My List
 				</v-btn>
 			</v-toolbar-items>
 		</v-toolbar>
@@ -222,7 +228,16 @@ export default {
     height: 300px !important;
   }
 }
+
 .v-card__title {
   justify-content: center;
+}
+#desktop-logo {
+  height: 70px;
+  width: 70px;
+}
+#mobile-logo {
+  height: 50px;
+  width: 50px;
 }
 </style>

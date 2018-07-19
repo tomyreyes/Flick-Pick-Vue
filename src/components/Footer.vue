@@ -10,16 +10,22 @@
 		>
 			<v-card-title class="justify-center">
 				<strong class="subheading">Flick Pick</strong>
-
 				<v-spacer/>
 				<v-btn
 					flat
+					@click="goHome"
+				>
+					Home
+				</v-btn>
+				<v-btn
+					flat
+					@click="goToAbout"
 				>
 					About
 				</v-btn>
-				<v-spacer/>
 				<v-btn
 					flat
+					@click="goToList"
 				>
 					My List
 				</v-btn>
@@ -30,7 +36,18 @@
 
 <script>
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  methods: {
+    goHome() {
+      this.$router.push('/')
+    },
+    goToList() {
+      this.$router.push('/mylist')
+    },
+    goToAbout() {
+      this.$router.push('/about')
+    }
+  }
 }
 </script>
 <style>
