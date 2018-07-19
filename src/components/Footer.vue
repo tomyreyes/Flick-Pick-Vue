@@ -9,7 +9,6 @@
 			tile
 		>
 			<v-card-title class="justify-center">
-				<strong class="subheading">Flick Pick</strong>
 				<v-spacer/>
 				<v-btn
 					flat

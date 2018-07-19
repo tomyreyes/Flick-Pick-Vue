@@ -1,34 +1,34 @@
 <template>
 	<v-bottom-nav
 		:value="true"
-		absolute
-		color="transparent"
+		fixed
+		height="70"
+		color="grey darken-4"
 	>
 		<v-btn
-			color="teal"
+			dark
 			flat
-			value="recent"
 			@click="goHome"
 		>
-			<v-icon>history</v-icon>
+			<span>Home</span>
+			<v-icon>home</v-icon>
 		</v-btn>
 		<v-btn
-			color="teal"
+			dark
 			flat
-			value="favorites"
 			@click="goToList"
 		>
-			<span>Favorites</span>
-			<v-icon>favorite</v-icon>
+			<span>My List</span>
+			<v-icon>local_movies</v-icon>
 		</v-btn>
 		<v-btn
-			color="teal"
+			dark
 			flat
 			value="nearby"
 			@click="goToAbout"
 		>
-			<span>Nearby</span>
-			<v-icon>place</v-icon>
+			<span>About</span>
+			<v-icon>help</v-icon>
 		</v-btn>
 	</v-bottom-nav>
 </template>
@@ -49,3 +49,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.v-btn {
+  padding-bottom: 50px;
+}
+</style>

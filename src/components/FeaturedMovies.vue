@@ -132,18 +132,21 @@
 				<v-divider/>
 			</v-card>
 		</v-dialog>
+		<RandomMovie/>
 	</div>
 </template>
 
 <script>
 import axios from 'axios'
 import { Carousel, Slide } from 'vue-carousel'
+import RandomMovie from './RandomMovie'
 
 export default {
   name: 'FeaturedMovies',
   components: {
     Carousel,
-    Slide
+    Slide,
+    RandomMovie
   },
   props: {
     userList: {

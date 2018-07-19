@@ -32,6 +32,7 @@ import FeaturedMovies from './components/FeaturedMovies'
 import Footer from './components/Footer'
 import SearchToolBar from './components/SearchToolBar'
 import MyList from './components/MyList'
+import RandomMovie from './components/RandomMovie'
 
 export default {
   name: 'App',
@@ -40,6 +41,7 @@ export default {
     BottomNav,
     FeaturedMovies,
     Footer,
+    RandomMovie,
     SearchToolBar,
     MyList
   },
