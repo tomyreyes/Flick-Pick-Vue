@@ -23,6 +23,8 @@
 					outline
 				/>
 				<v-btn
+					color="success"
+					ripple
 					@click="findMovie"
 				>
 					Find
@@ -40,11 +42,32 @@
 					/>
 					<v-card-actions>
 						<v-card-text>Score: {{ randomMovie.vote_average }}</v-card-text>
-						<v-icon 
-							dark 
-							color="red darken-1"   
-							@click="sendMovie(randomMovie.id)">remove
-						</v-icon>
+						<v-btn 
+							v-if="userList.includes(randomMovie.id)" 
+							icon
+							ripple
+							@click="sendMovie(randomMovie.id)"
+						>
+							<v-icon 
+								dark 
+								color="red darken-1"   
+							>
+								remove
+							</v-icon>
+						</v-btn>
+						<v-btn
+							v-else
+							icon
+							ripple
+							@click="sendMovie(randomMovie.id)"
+						>
+							<v-icon 
+								color="green accent-3" 
+								dark 
+							>
+								add
+							</v-icon>
+						</v-btn>
 						<v-btn 
 							small 
 							flat 
@@ -65,6 +88,32 @@
 					class="display-1"
 				>
 					{{ randomMovie.title }}
+					<v-btn 
+						v-if="userList.includes(randomMovie.id)"
+						icon
+						absolute
+						right
+						ripple
+						@click="sendMovie(randomMovie.id)"
+					>
+						<v-icon 
+							dark 
+							color="red darken-1">remove</v-icon>
+					</v-btn>
+					<v-btn
+						v-else
+						icon
+						absolute
+						right
+						ripple
+						@click="sendMovie(randomMovie.id)"
+					> 
+						<v-icon 
+							dark 
+							color="green accent-3" >
+							add
+						</v-icon>
+					</v-btn>
 				</v-card-title>
 				<v-card-media 
 					:src="`http://image.tmdb.org/t/p/w780${randomMovie.backdrop_path}`"
@@ -93,6 +142,26 @@
 import axios from 'axios'
 export default {
   name: 'RandomMovie',
+  props: {
+    userList: {
+      default() {
+        return []
+      },
+      type: Array
+    },
+    moreDetails: {
+      default() {
+        return
+      },
+      type: Function
+    },
+    sendMovie: {
+      default() {
+        return
+      },
+      type: Function
+    }
+  },
   data() {
     return {
       genres: [
@@ -171,3 +240,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.v-card {
+  margin: 20px 0;
+}
+</style>

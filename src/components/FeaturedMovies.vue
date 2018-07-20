@@ -8,7 +8,7 @@
 			<v-container fill-height>
 				<v-layout align-center>
 					<v-flex text-xs-center>
-						<h4 class="display-2">End the movie night struggle</h4>
+						<h4 class="display-2">End The Struggle</h4>
 					</v-flex>
 				</v-layout>
 			</v-container>
@@ -132,7 +132,11 @@
 				<v-divider/>
 			</v-card>
 		</v-dialog>
-		<RandomMovie/>
+		<RandomMovie
+			:user-list="userList"
+			:more-details="moreDetails"
+			:send-movie="sendMovie"
+		/>
 	</div>
 </template>
 

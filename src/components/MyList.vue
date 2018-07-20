@@ -16,7 +16,7 @@
 			Pick a movie
 		</v-btn>
 		<transition name="fade-title">
-			<h2 
+			<h2
 				v-if="showMessage"
 				class="subtitle"
 			>

@@ -19,7 +19,8 @@
 				class="hidden-sm-and-down"
 			/>
 			<BottomNav
-				class="hidden-md-and-up"/>
+				class="hidden-md-and-up"
+			/>
 		</v-app>
 	</div>
 </template>
