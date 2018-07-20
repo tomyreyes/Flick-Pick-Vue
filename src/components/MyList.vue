@@ -7,6 +7,10 @@
 		>
 			Your list is empty
 		</h3>
+		<RandomMovie
+			v-if="userList.length === 0"
+			class="random-movie"
+		/>
 		<v-btn 
 			v-else-if="userList.length !== 0 && randomMovie === null" 
 			color="success"
@@ -176,8 +180,12 @@
 </template>
 
 <script>
+import RandomMovie from './RandomMovie'
 export default {
   name: 'MyList',
+  components: {
+    RandomMovie
+  },
   props: {
     userList: {
       default() {
@@ -262,5 +270,8 @@ export default {
   100% {
     transform: rotate(360deg) scale(1);
   }
+}
+.random-movie {
+  background: #fafafa;
 }
 </style>
