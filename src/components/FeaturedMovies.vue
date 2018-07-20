@@ -13,67 +13,153 @@
 				</v-layout>
 			</v-container>
 		</v-jumbotron>
-		<h1 class="page-title">This Week's Featured Movies</h1>
-		<v-container grid-list-md >
-			<carousel
-				:loop="true"
-				:mouse-drag="false"
-				:navigation-enabled="true"
-				:scroll-per-page="false"
-				:per-page-custom="[[360, 1],[480, 2], [700, 3], [900,4], [1264, 5], [1904, 6]]"
-			>
-				<slide
-					v-for="(movie, index ) in featureList" 
-					:key="index"
-					class="carousel-card"
+		<div class="feature-container">
+			<h1 
+				id="feature-title"
+				class="page-title">This Week's Featured Movies</h1>
+			<v-container grid-list-md >
+				<carousel
+					:loop="true"
+					:mouse-drag="false"
+					:navigation-enabled="true"
+					:scroll-per-page="false"
+					:per-page-custom="[[360, 1],[480, 2], [700, 3], [900,4], [1264, 5], [1904, 6]]"
 				>
-					<v-card >
-						<v-card-media
-							:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
-							:contain="true"
-							class="poster"
-							height="342" 
-							@click="moreDetails(movie)" 
+					<slide
+						v-for="(movie, index ) in featuredMovies" 
+						:key="index"
+						class="carousel-card"
+					>
+						<v-card >
+							<v-card-media
+								:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
+								:contain="true"
+								class="poster"
+								height="342" 
+								@click="moreDetails(movie)" 
+							/>
+							<v-card-actions>
+								<v-card-text>Score: {{ movie.vote_average }}</v-card-text>
+								<v-btn 
+									v-if="userList.includes(movie.id)" 
+									icon
+									ripple
+									@click="sendMovie(movie.id)"
+								>
+									<v-icon 
+										dark 
+										color="red darken-1"   
+									>
+										remove
+									</v-icon>
+								</v-btn>
+								<v-btn
+									v-else
+									icon
+									ripple
+									@click="sendMovie(movie.id)"
+								>
+									<v-icon 
+										color="green accent-3" 
+										dark 
+									>
+										add
+									</v-icon>
+								</v-btn>
+								<v-btn 
+									small 
+									flat 
+									@click="moreDetails(movie)">
+									Details
+								</v-btn>
+							</v-card-actions>
+						</v-card>
+					</slide>
+				</carousel>
+			</v-container>
+		</div>
+		<div class="genre-container">
+			<v-container grid-list-md>
+				<h1
+					class="subtitle"
+				>Genres</h1>
+				<v-layout
+					align-center
+					justify-center
+				>
+					<v-flex
+						xs-12
+						sm6
+					>
+						<v-select
+							v-model="chosenGenre"
+							:items="genres"
+							label="Genres"
+							outline
+							@change="genreChange"
 						/>
-						<v-card-actions>
-							<v-card-text>Score: {{ movie.vote_average }}</v-card-text>
-							<v-btn 
-								v-if="userList.includes(movie.id)" 
-								icon
-								ripple
-								@click="sendMovie(movie.id)"
-							>
-								<v-icon 
-									dark 
-									color="red darken-1"   
+					</v-flex>
+				</v-layout>
+				<carousel
+					:loop="true"
+					:mouse-drag="false"
+					:navigation-enabled="true"
+					:scroll-per-page="false"
+					:per-page-custom="[[360, 1],[480, 2], [700, 3], [900,4], [1264, 5], [1904, 6]]"
+				>
+					<slide
+						v-for="(movie, index ) in genreMovies" 
+						:key="index"
+						class="carousel-card"
+					>
+						<v-card >
+							<v-card-media
+								:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
+								:contain="true"
+								class="poster"
+								height="342" 
+								@click="moreDetails(movie)" 
+							/>
+							<v-card-actions>
+								<v-card-text>Score: {{ movie.vote_average }}</v-card-text>
+								<v-btn 
+									v-if="userList.includes(movie.id)" 
+									icon
+									ripple
+									@click="sendMovie(movie.id)"
 								>
-									remove
-								</v-icon>
-							</v-btn>
-							<v-btn
-								v-else
-								icon
-								ripple
-								@click="sendMovie(movie.id)"
-							>
-								<v-icon 
-									color="green accent-3" 
-									dark 
+									<v-icon 
+										dark 
+										color="red darken-1"   
+									>
+										remove
+									</v-icon>
+								</v-btn>
+								<v-btn
+									v-else
+									icon
+									ripple
+									@click="sendMovie(movie.id)"
 								>
-									add
-								</v-icon>
-							</v-btn>
-							<v-btn 
-								small 
-								flat 
-								@click="moreDetails(movie)">
-								Details
-							</v-btn>
-						</v-card-actions>
-					</v-card>
-				</slide>
-			</carousel>
-		</v-container>
+									<v-icon 
+										color="green accent-3" 
+										dark 
+									>
+										add
+									</v-icon>
+								</v-btn>
+								<v-btn 
+									small 
+									flat 
+									@click="moreDetails(movie)">
+									Details
+								</v-btn>
+							</v-card-actions>
+						</v-card>
+					</slide>
+				</carousel>
+			</v-container>
+		</div>
 		<v-dialog 
 			v-if="clickedMovie !== null"
 			v-model="dialog"
@@ -133,6 +219,7 @@
 			</v-card>
 		</v-dialog>
 		<RandomMovie
+			:genres="genres"
 			:user-list="userList"
 			:more-details="moreDetails"
 			:send-movie="sendMovie"
@@ -162,9 +249,33 @@ export default {
   },
   data() {
     return {
-      featureList: null,
+      genres: [
+        { text: 'Action', value: 28 },
+        { text: 'Adventure', value: 12 },
+        { text: 'Animation', value: 16 },
+        { text: 'Comedy', value: 35 },
+        { text: 'Crime', value: 80 },
+        { text: 'Documentary', value: 99 },
+        { text: 'Drama', value: 18 },
+        { text: 'Family', value: 10751 },
+        { text: 'Fantasy', value: 14 },
+        { text: 'History', value: 36 },
+        { text: 'Horror', value: 27 },
+        { text: 'Music', value: 10402 },
+        { text: 'Mystery', value: 9648 },
+        { text: 'Romance', value: 10749 },
+        { text: 'Science Fiction', value: 878 },
+        { text: 'TV Movie', value: 10770 },
+        { text: 'Thriller', value: 53 },
+        { text: 'War', value: 10752 },
+        { text: 'Western', value: 37 }
+      ],
+      featuredMovies: null,
       dialog: false,
-      clickedMovie: null
+      clickedMovie: null,
+      genreMovies: null,
+      genreList: null,
+      chosenGenre: 14
     }
   },
   created() {
@@ -175,7 +286,20 @@ export default {
         page: 1,
         api_key: '2d1610b0077610c43b2fe59ad827cfec'
       }
-    }).then(response => (this.featureList = response.data.results))
+    }).then(response => (this.featuredMovies = response.data.results))
+    axios({
+      method: 'GET',
+      url: 'https://api.themoviedb.org/3/discover/movie',
+      params: {
+        include_adult: 'false',
+        language: 'en-US',
+        api_key: '2d1610b0077610c43b2fe59ad827cfec',
+        external_source: 'imdb_id',
+        with_genres: this.chosenGenre,
+        sort_by: 'popularity.desc',
+        include_video: 'false'
+      }
+    }).then(response => (this.genreMovies = response.data.results))
   },
   methods: {
     sendMovie(id) {
@@ -184,6 +308,22 @@ export default {
     moreDetails(movie) {
       this.dialog = true
       this.clickedMovie = movie
+    },
+    genreChange(genre) {
+      this.chosenGenre = genre
+      axios({
+        method: 'GET',
+        url: 'https://api.themoviedb.org/3/discover/movie',
+        params: {
+          include_adult: 'false',
+          language: 'en-US',
+          api_key: '2d1610b0077610c43b2fe59ad827cfec',
+          external_source: 'imdb_id',
+          with_genres: this.chosenGenre,
+          sort_by: 'popularity.desc',
+          include_video: 'false'
+        }
+      }).then(response => (this.genreMovies = response.data.results))
     }
   }
 }
@@ -194,6 +334,13 @@ export default {
   .dialog-media {
     height: 300px !important;
   }
+}
+#feature-title {
+  padding-top: 50px;
+}
+.feature-container {
+  background: #f6f6f6;
+  margin-top: -32px;
 }
 .responsive-image {
   background: url('./../assets/movie-theatre.jpg') no-repeat;

@@ -89,10 +89,16 @@ $primary-font-color: #2c3e50;
 $title-margin: 30px;
 $subtitle-margin: 30px;
 $main-color: #212121;
+$header-font: Roboto;
 
 #App {
   color: $primary-font-color;
   text-align: center;
+  h1,
+  h2,
+  h3 {
+    font-family: $header-font;
+  }
 }
 
 #Footer {
