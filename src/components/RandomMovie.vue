@@ -116,7 +116,14 @@
 					</v-btn>
 				</v-card-title>
 				<v-card-media 
+					v-if="randomMovie.backdrop_path !== null" 
 					:src="`http://image.tmdb.org/t/p/w780${randomMovie.backdrop_path}`"
+					class="dialog-media"
+					height="700" 
+				/>
+				<v-card-media 
+					v-else 
+					:src="`http://image.tmdb.org/t/p/w780${randomMovie.poster_path}`"
 					class="dialog-media"
 					height="700" 
 				/>
