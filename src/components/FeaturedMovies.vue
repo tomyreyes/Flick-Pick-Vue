@@ -3,12 +3,12 @@
 		<v-jumbotron
 			height="600px"
 			dark
-			class="responsive-image"
+			class="jumbotron-img"
 		>
 			<v-container fill-height>
 				<v-layout align-center>
 					<v-flex text-xs-center>
-						<h4 class="display-2">End The Struggle</h4>
+						<h4 class="display-2">End The Movie Night Struggle</h4>
 					</v-flex>
 				</v-layout>
 			</v-container>
@@ -342,7 +342,7 @@ export default {
   background: #f6f6f6;
   margin-top: -32px;
 }
-.responsive-image {
+.jumbotron-img {
   background: url('./../assets/movie-theatre.jpg') no-repeat;
   background-size: cover;
   background-position: center;

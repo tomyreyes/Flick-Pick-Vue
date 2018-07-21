@@ -96,8 +96,12 @@ $header-font: Roboto;
   text-align: center;
   h1,
   h2,
-  h3 {
+  h3,
+  p {
     font-family: $header-font;
+  }
+  p {
+    font-size: 16px;
   }
 }
 
