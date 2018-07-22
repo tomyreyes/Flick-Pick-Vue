@@ -103,6 +103,10 @@ $alternate-font-color: #000000;
   }
   p {
     font-size: 16px;
+    p {
+      text-align: justify;
+      text-justify: inter-word;
+    }
   }
   a {
     color: $main-font-color;

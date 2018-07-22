@@ -82,10 +82,6 @@ export default {
   background-position: center;
   width: 100;
 }
-p {
-  text-align: justify;
-  text-justify: inter-word;
-}
 .description {
   margin-top: 40px;
 }

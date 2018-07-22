@@ -16,21 +16,14 @@
 			<v-container 
 				grid-list-md 
 			>
-				<v-layout 
-					justify-center
-					wrap
-				>
-					
-					<h1 
-						class=" feature-message subtitle">Let us help you decide
-					</h1>
-
-					<p class="message">Why waste hours every week because of indecisiveness? Flick Pick will enable you to find movies and decide which one to watch instantly.
-						<br>Our platform will help you spend more time watching movies and less time scrolling. 
-						<br>As well, this we will help you minimize arguments between you and those around you.
-					</p>
-				</v-layout>
-			</v-container>
+				<h1 
+					class=" feature-message subtitle">Let us help you decide
+				</h1>
+				<h3>Why waste hours everytime you want to watch a movie? Flick Pick will make the decision for you. 
+				</h3>
+				<h3 class="message-end">Our platform will help you spend more time watching movies and less time scrolling.</h3>
+				
+			</v-container> 
 		</div>
 		<div class="genre-container">
 			<h1
@@ -363,7 +356,7 @@ export default {
   background: #f6f6f6;
   margin-top: -32px;
 }
-.message {
+.message-end {
   margin-bottom: 30px;
 }
 .jumbotron-img {
