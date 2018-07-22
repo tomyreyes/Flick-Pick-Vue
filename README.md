@@ -20,11 +20,11 @@ The go-to app to end all struggles to find that one movie to watch on a Friday n
 Eugene Yu for working on the first version of this project with me. 
 
 ## This application was built using:
-* [Vue.js] (https://reactjs.org/)
-*[Vue-router] (https://router.vuejs.org/)
-*[Vue-carousel] (https://ssense.github.io/vue-carousel/)
-* [Axios] (https://www.npmjs.com/package/axios)
-* [The MovieDB] (https://www.themoviedb.org/)
-* [Vuetify] (https://vuetifyjs.com/en/)
-* [SASS] (https://sass-lang.com/)
+* [Vue.js](https://reactjs.org/)
+*[Vue-router](https://router.vuejs.org/)
+*[Vue-carousel](https://ssense.github.io/vue-carousel/)
+* [Axios](https://www.npmjs.com/package/axios)
+* [The MovieDB](https://www.themoviedb.org/)
+* [Vuetify](https://vuetifyjs.com/en/)
+* [SASS](https://sass-lang.com/)
 
