@@ -1,7 +1,7 @@
 # Flick Pick
 
 
-The go-to app to end all struggles to find that one movie to watch on a Friday night. Fellow movie lovers, aren't we tired of finding ourselves in situations where no one can decide or no one wants to take responsibility for selecting a movie?
+The go-to app to end all struggles to find that one movie to watch on a Friday night. Fellow movie lovers, aren't we tired of finding ourselves in situations where no one can decide or no one wants to take responsibility for selecting a movie? I present to you the solution. Instead of scrolling through every movie mindlessly, just add movies to your list and let Flick Pick make the decision for you!
 
 ## Features
 + Search for any movie
@@ -21,8 +21,8 @@ Eugene Yu for working on the first version of this project with me.
 
 ## This application was built using:
 * [Vue.js](https://reactjs.org/)
-*[Vue-router](https://router.vuejs.org/)
-*[Vue-carousel](https://ssense.github.io/vue-carousel/)
+* [Vue-router](https://router.vuejs.org/)
+* [Vue-carousel](https://ssense.github.io/vue-carousel/)
 * [Axios](https://www.npmjs.com/package/axios)
 * [The MovieDB](https://www.themoviedb.org/)
 * [Vuetify](https://vuetifyjs.com/en/)
