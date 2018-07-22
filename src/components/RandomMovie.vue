@@ -1,7 +1,7 @@
 <template>
 	<div class="random-container">
 		<v-container>
-			<h1 class="subtitle-alternate">Still can't find a movie? Find one by random!</h1>
+			<h2 class="subtitle">Still can't find a movie? Find one by random!</h2>
 			<v-layout 
 				row 
 				wrap 
@@ -21,8 +21,8 @@
 						outline
 					/>
 					<v-btn
-						color="success"
 						ripple
+						class="main-btn"
 						@click="findMovie"
 					>
 						Find
@@ -88,6 +88,7 @@
 						{{ randomMovie.title }}
 						<v-btn 
 							v-if="userList.includes(randomMovie.id)"
+							class="hidden-sm-and-down"
 							icon
 							absolute
 							right
@@ -100,6 +101,7 @@
 						</v-btn>
 						<v-btn
 							v-else
+							class="hidden-sm-and-down"
 							icon
 							absolute
 							right
@@ -135,9 +137,36 @@
 					>
 						{{ randomMovie.overview }}
 					</v-card-text>
-					<v-card-title class="title cast">
-						Cast
-					</v-card-title>
+					<v-card-actions 
+						class="hidden-md-and-up"
+					>
+						<v-btn 
+							v-if="userList.includes(randomMovie.id)" 
+							icon
+							ripple
+							@click="sendMovie(randomMovie.id)"
+						>
+							<v-icon 
+								dark 
+								color="red darken-1"   
+							>
+								remove
+							</v-icon>
+						</v-btn>
+						<v-btn
+							v-else
+							icon
+							ripple
+							@click="sendMovie(randomMovie.id)"
+						>
+							<v-icon 
+								color="green accent-3" 
+								dark 
+							>
+								add
+							</v-icon>
+						</v-btn>
+					</v-card-actions>
 					<v-divider/>
 				</v-card>
 			</v-dialog>

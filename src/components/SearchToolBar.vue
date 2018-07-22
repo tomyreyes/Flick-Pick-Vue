@@ -91,7 +91,7 @@
 					flat
 					@click="goToList"
 				>
-					<v-chip>
+					<v-chip id="nav-chip">
 						{{ userList.length }}
 					</v-chip>
 					My List
@@ -169,6 +169,24 @@ export default {
         return []
       },
       type: Array
+    },
+    goHome: {
+      default() {
+        return
+      },
+      type: Function
+    },
+    goToAbout: {
+      default() {
+        return
+      },
+      type: Function
+    },
+    goToList: {
+      default() {
+        return
+      },
+      type: Function
     }
   },
   data() {
@@ -208,15 +226,6 @@ export default {
     moreDetails(movie) {
       this.dialog = true
       this.clickedMovie = movie
-    },
-    goHome() {
-      this.$router.push('/')
-    },
-    goToList() {
-      this.$router.push('/mylist')
-    },
-    goToAbout() {
-      this.$router.push('/about')
     }
   }
 }
@@ -243,5 +252,9 @@ export default {
 #mobile-logo {
   height: 50px;
   width: 50px;
+}
+#nav-chip {
+  background-color: #40a6da !important;
+  color: #ffffff;
 }
 </style>

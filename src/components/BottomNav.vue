@@ -36,15 +36,24 @@
 <script>
 export default {
   name: 'BottomNav',
-  methods: {
-    goHome() {
-      this.$router.push('/')
+  props: {
+    goHome: {
+      default() {
+        return
+      },
+      type: Function
     },
-    goToList() {
-      this.$router.push('/mylist')
+    goToAbout: {
+      default() {
+        return
+      },
+      type: Function
     },
-    goToAbout() {
-      this.$router.push('/about')
+    goToList: {
+      default() {
+        return
+      },
+      type: Function
     }
   }
 }

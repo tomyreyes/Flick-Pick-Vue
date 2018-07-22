@@ -28,7 +28,7 @@
 					sm7
 				>
 					<p class="description">
-						Flick Pick has been designed for those who love movies, but also struggle to decide which ones to watch. Do you consistantly find yourself in a position where you spend hours trying to find the right movie to watch?
+						Flick Pick has been designed for the indecisive movie lover. Do you consistantly find yourself in a position where you spend hours trying to find the right movie to watch?
 						Do you constantly argue and debate with your loved ones about which movie you will be watching that evening? <b>You are not alone</b>.
 					</p>
 					<h3><a 
@@ -64,10 +64,6 @@
 </template>
 
 
-
-
-
-
 <script>
 export default {
   name: 'About'
@@ -84,5 +80,9 @@ export default {
 }
 .description {
   margin-top: 40px;
+}
+p {
+  text-align: justify;
+  text-justify: inter-word;
 }
 </style>

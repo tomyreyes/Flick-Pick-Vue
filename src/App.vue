@@ -4,21 +4,31 @@
 			<SearchToolBar 
 				:user-list="userList"
 				:my-list="myList"
+				:go-home="goHome"
+				:go-to-about="goToAbout"
+				:go-to-list="goToList"
 				@deleteMovie="deleteMovie($event)"
 				@sendMovie="toggleMovie($event)"
 			/>
 			<router-view
 				:user-list="userList"
 				:my-list="myList"
+				:genres="genres"
 				class="Pages" 
 				@sendMovie="toggleMovie"
 				@deleteMovie="deleteMovie($event)"
 			/>
 			<Footer 
 				id="Footer" 
+				:go-home="goHome"
+				:go-to-about="goToAbout"
+				:go-to-list="goToList"
 				class="hidden-sm-and-down"
 			/>
 			<BottomNav
+				:go-home="goHome"
+				:go-to-about="goToAbout"
+				:go-to-list="goToList"
 				class="hidden-md-and-up"
 			/>
 		</v-app>
@@ -50,7 +60,28 @@ export default {
     return {
       userList: [],
       sideNav: false,
-      myList: []
+      myList: [],
+      genres: [
+        { text: 'Action', value: 28 },
+        { text: 'Adventure', value: 12 },
+        { text: 'Animation', value: 16 },
+        { text: 'Comedy', value: 35 },
+        { text: 'Crime', value: 80 },
+        { text: 'Documentary', value: 99 },
+        { text: 'Drama', value: 18 },
+        { text: 'Family', value: 10751 },
+        { text: 'Fantasy', value: 14 },
+        { text: 'History', value: 36 },
+        { text: 'Horror', value: 27 },
+        { text: 'Music', value: 10402 },
+        { text: 'Mystery', value: 9648 },
+        { text: 'Romance', value: 10749 },
+        { text: 'Science Fiction', value: 878 },
+        { text: 'TV Movie', value: 10770 },
+        { text: 'Thriller', value: 53 },
+        { text: 'War', value: 10752 },
+        { text: 'Western', value: 37 }
+      ]
     }
   },
   methods: {
@@ -78,6 +109,22 @@ export default {
       this.userList = userKeepList
       let myKeepList = this.myList.filter(value => value.id !== id)
       this.myList = myKeepList
+    },
+    scrollToTop() {
+      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
+    },
+    goHome() {
+      this.$router.push('/')
+      this.scrollToTop()
+    },
+    goToList() {
+      this.$router.push('/mylist')
+      this.scrollToTop()
+    },
+    goToAbout() {
+      this.$router.push('/about')
+      this.scrollToTop()
     }
   }
 }
@@ -103,13 +150,10 @@ $alternate-font-color: #000000;
   }
   p {
     font-size: 16px;
-    p {
-      text-align: justify;
-      text-justify: inter-word;
-    }
   }
   a {
     color: $main-font-color;
+    text-decoration: none;
   }
 }
 
@@ -151,5 +195,17 @@ ul {
 }
 .v-card__title {
   justify-content: center;
+}
+.main-btn {
+  background-color: $main-font-color !important;
+  color: #ffffff !important;
+}
+#nav-chip {
+  background-color: $main-font-color;
+}
+@media only screen and (max-width: 999px) {
+  .dialog-media {
+    height: 300px !important;
+  }
 }
 </style>

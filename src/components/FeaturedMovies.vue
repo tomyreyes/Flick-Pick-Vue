@@ -19,15 +19,14 @@
 				<h1 
 					class=" feature-message subtitle">Let us help you decide
 				</h1>
-				<h3>Why waste hours everytime you want to watch a movie? Flick Pick will make the decision for you. 
-				</h3>
-				<h3 class="message-end">Our platform will help you spend more time watching movies and less time scrolling.</h3>
+				<p>Why waste hours everytime you want to watch a movie? Flick Pick will make the decision for you.
+				<br>Our platform will help you spend more time watching movies and less time scrolling.</p>
 				
 			</v-container> 
 		</div>
 		<div class="genre-container">
 			<h1
-				class="subtitle">This week's featured movies</h1>
+				class="subtitle-alternate">This week's featured movies</h1>
 			<v-container grid-list-md >
 				<carousel
 					:loop="true"
@@ -183,6 +182,7 @@
 					{{ clickedMovie.title }}
 					<v-btn 
 						v-if="userList.includes(clickedMovie.id)"
+						class="hidden-sm-and-down"
 						icon
 						absolute
 						right
@@ -195,6 +195,7 @@
 					</v-btn>
 					<v-btn
 						v-else
+						class="hidden-sm-and-down"
 						icon
 						absolute
 						right
@@ -223,18 +224,39 @@
 				>
 					{{ clickedMovie.overview }}
 				</v-card-text>
-				<v-card-title class="title cast">
-					Cast
-				</v-card-title>
+				<v-card-actions 
+					class="hidden-md-and-up"
+				>
+					<v-btn 
+						v-if="userList.includes(clickedMovie.id)" 
+						icon
+						ripple
+						@click="sendMovie(clickedMovie.id)"
+					>
+						<v-icon 
+							dark 
+							color="red darken-1"   
+						>
+							remove
+						</v-icon>
+					</v-btn>
+					<v-btn
+						v-else
+						icon
+						ripple
+						@click="sendMovie(clickedMovie.id)"
+					>
+						<v-icon 
+							color="green accent-3" 
+							dark 
+						>
+							add
+						</v-icon>
+					</v-btn>
+				</v-card-actions>
 				<v-divider/>
 			</v-card>
 		</v-dialog>
-		<!-- <RandomMovie
-			:genres="genres"
-			:user-list="userList"
-			:more-details="moreDetails"
-			:send-movie="sendMovie"
-		/> -->
 	</div>
 </template>
 
@@ -256,31 +278,16 @@ export default {
         return []
       },
       type: Array
+    },
+    genres: {
+      default() {
+        return []
+      },
+      type: Array
     }
   },
   data() {
     return {
-      genres: [
-        { text: 'Action', value: 28 },
-        { text: 'Adventure', value: 12 },
-        { text: 'Animation', value: 16 },
-        { text: 'Comedy', value: 35 },
-        { text: 'Crime', value: 80 },
-        { text: 'Documentary', value: 99 },
-        { text: 'Drama', value: 18 },
-        { text: 'Family', value: 10751 },
-        { text: 'Fantasy', value: 14 },
-        { text: 'History', value: 36 },
-        { text: 'Horror', value: 27 },
-        { text: 'Music', value: 10402 },
-        { text: 'Mystery', value: 9648 },
-        { text: 'Romance', value: 10749 },
-        { text: 'Science Fiction', value: 878 },
-        { text: 'TV Movie', value: 10770 },
-        { text: 'Thriller', value: 53 },
-        { text: 'War', value: 10752 },
-        { text: 'Western', value: 37 }
-      ],
       featuredMovies: null,
       dialog: false,
       clickedMovie: null,
@@ -341,22 +348,19 @@ export default {
 </script>
 
 <style scoped>
-@media only screen and (max-width: 999px) {
-  .dialog-media {
-    height: 300px !important;
-  }
-}
 .feature-message {
-  padding-top: 50px;
+  padding-top: 30px;
 }
 .main-text {
   color: black;
 }
 .feature-container {
   background: #f6f6f6;
-  margin-top: -32px;
+  margin-top: -32px; /*removes gap between container ands jumobtron */
 }
 .message-end {
+  text-align: center;
+  text-justify: inter-word;
   margin-bottom: 30px;
 }
 .jumbotron-img {
@@ -365,15 +369,5 @@ export default {
   background-position: center;
   width: 100;
   opacity: 0.8;
-}
-.tns-item {
-  font-size: 3rem;
-  font-family: Arial;
-  text-align: center;
-  padding: 2em;
-  background: #fafafb;
-}
-.tns-item:nth-child(odd) {
-  background: #c8e1ff;
 }
 </style>

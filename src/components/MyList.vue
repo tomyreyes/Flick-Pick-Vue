@@ -3,20 +3,31 @@
 		<h1 class="page-title">My List</h1>
 		<RandomMovie
 			v-if="userList.length === 0"
+			:genres="genres"
+			:send-movie="sendMovie"
+			:more-details="moreDetails"
 			class="random-movie"
 		/>
 		<v-btn 
 			v-else-if="userList.length !== 0 && randomMovie === null" 
-			color="success"
+			class="main-btn"
 			ripple
 			@click="randomizeMovie"
 		>
 			Pick a movie
 		</v-btn>
+		<v-btn
+			v-if="randomMovie !== null"
+			color="error"
+			ripple
+			@click="undoRandomize"
+		>
+			Return My List 
+		</v-btn>
 		<transition name="fade-title">
 			<h2
 				v-if="showMessage"
-				class="subtitle"
+				class="subtitle-alternate"
 			>
 				Tonight you are watching
 			</h2>
@@ -44,7 +55,7 @@
 						<v-card >
 							<v-card-media
 								:src="`http://image.tmdb.org/t/p/w342${movie.poster_path}`" 
-								height="550" 
+								height="500"
 								class="poster"
 								@click="moreDetails(movie)" 
 							/>
@@ -119,14 +130,7 @@
 				</v-layout>
 			</transition>
 		</v-container>
-		<v-btn
-			v-if="randomMovie !== null"
-			color="error"
-			ripple
-			@click="undoRandomize"
-		>
-			Return My List 
-		</v-btn>
+		
 		<v-dialog 
 			v-if="clickedMovie !== null"
 			v-model="dialog"
@@ -138,6 +142,7 @@
 				>
 					{{ clickedMovie.title }}
 					<v-btn 
+						class="hidden-sm-and-down"
 						icon
 						absolute
 						right
@@ -164,9 +169,24 @@
 				>
 					{{ clickedMovie.overview }}
 				</v-card-text>
-				<v-card-title class="title cast">
-					Cast
-				</v-card-title>
+				<v-card-actions 
+					class="hidden-md-and-up"
+				>
+					<v-btn 
+						v-if="userList.includes(clickedMovie.id)" 
+						icon
+						ripple
+						@click="sendMovie(clickedMovie.id)"
+					>
+						<v-icon 
+							dark 
+							color="red darken-1"   
+						>
+							remove
+						</v-icon>
+					</v-btn>
+				</v-card-actions>
+
 				<v-divider/>
 			</v-card>
 		</v-dialog>
@@ -188,6 +208,12 @@ export default {
       type: Array
     },
     myList: {
+      default() {
+        return []
+      },
+      type: Array
+    },
+    genres: {
       default() {
         return []
       },
