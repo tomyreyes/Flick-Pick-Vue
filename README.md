@@ -3,6 +3,9 @@
 
 The go-to app to end all struggles to find that one movie to watch on a Friday night. Fellow movie lovers, aren't we tired of finding ourselves in situations where no one can decide or no one wants to take responsibility for selecting a movie? I present to you the solution. Instead of scrolling through every movie mindlessly, just add movies to your list and let Flick Pick make the decision for you!
 
+## Demo
+Coming soon.
+
 ## Features
 + Search for any movie
 + View movie details including release date, rating and plot summary.
@@ -16,8 +19,8 @@ The go-to app to end all struggles to find that one movie to watch on a Friday n
 + Display which platforms each movie can be watched
 
 ## Special Thanks To:
-[The Movie Database](https://www.themoviedb.org/) and their community for free access to their API
-Eugene Yu for working on the first version of this project with me. 
+* [The Movie Database](https://www.themoviedb.org/) and their community for free access to their API
+* Eugene Yu for working on the first version of this project with me in React. 
 
 ## This application was built using:
 * [Vue.js](https://reactjs.org/)
