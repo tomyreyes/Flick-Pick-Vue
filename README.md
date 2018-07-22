@@ -16,7 +16,7 @@ The go-to app to end all struggles to find that one movie to watch on a Friday n
 + Display which platforms each movie can be watched
 
 ## Special Thanks To:
-[The Movie Database] (https://www.themoviedb.org/) for free access to their community driven API
+[The Movie Database](https://www.themoviedb.org/) and their community for free access to their API
 Eugene Yu for working on the first version of this project with me. 
 
 ## This application was built using:
