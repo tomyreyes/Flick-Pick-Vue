@@ -90,7 +90,8 @@ $title-margin: 30px;
 $subtitle-margin: 30px;
 $main-color: #212121;
 $header-font: Roboto;
-
+$main-font-color: #40a6da;
+$alternate-font-color: #000000;
 #App {
   color: $primary-font-color;
   text-align: center;
@@ -102,6 +103,9 @@ $header-font: Roboto;
   }
   p {
     font-size: 16px;
+  }
+  a {
+    color: $main-font-color;
   }
 }
 
@@ -127,7 +131,14 @@ ul {
 }
 .subtitle {
   margin: $subtitle-margin 0;
+  color: $main-font-color;
 }
+
+.subtitle-alternate {
+  margin: $subtitle-margin 0;
+  color: $alternate-font-color;
+}
+
 .poster:hover {
   opacity: 0.7;
 }

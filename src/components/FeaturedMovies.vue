@@ -2,21 +2,39 @@
 	<div>
 		<v-jumbotron
 			height="600px"
-			dark
 			class="jumbotron-img"
 		>
 			<v-container fill-height>
 				<v-layout align-center>
 					<v-flex text-xs-center>
-						<h4 class="display-2">End The Movie Night Struggle</h4>
+						<h2 class="display-2 font-weight-bold main-text">End The Movie Night Struggle</h2>
 					</v-flex>
 				</v-layout>
 			</v-container>
 		</v-jumbotron>
 		<div class="feature-container">
-			<h1 
-				id="feature-title"
-				class="page-title">This Week's Featured Movies</h1>
+			<v-container 
+				grid-list-md 
+			>
+				<v-layout 
+					justify-center
+					wrap
+				>
+					
+					<h1 
+						class=" feature-message subtitle">Let us help you decide
+					</h1>
+
+					<p class="message">Why waste hours every week because of indecisiveness? Flick Pick will enable you to find movies and decide which one to watch instantly.
+						<br>Our platform will help you spend more time watching movies and less time scrolling. 
+						<br>As well, this we will help you minimize arguments between you and those around you.
+					</p>
+				</v-layout>
+			</v-container>
+		</div>
+		<div class="genre-container">
+			<h1
+				class="subtitle">This week's featured movies</h1>
 			<v-container grid-list-md >
 				<carousel
 					:loop="true"
@@ -78,11 +96,11 @@
 				</carousel>
 			</v-container>
 		</div>
-		<div class="genre-container">
+		<div class="feature-container">
 			<v-container grid-list-md>
 				<h1
 					class="subtitle"
-				>Genres</h1>
+				>Select a genre</h1>
 				<v-layout
 					align-center
 					justify-center
@@ -218,12 +236,12 @@
 				<v-divider/>
 			</v-card>
 		</v-dialog>
-		<RandomMovie
+		<!-- <RandomMovie
 			:genres="genres"
 			:user-list="userList"
 			:more-details="moreDetails"
 			:send-movie="sendMovie"
-		/>
+		/> -->
 	</div>
 </template>
 
@@ -335,18 +353,25 @@ export default {
     height: 300px !important;
   }
 }
-#feature-title {
+.feature-message {
   padding-top: 50px;
+}
+.main-text {
+  color: black;
 }
 .feature-container {
   background: #f6f6f6;
   margin-top: -32px;
 }
+.message {
+  margin-bottom: 30px;
+}
 .jumbotron-img {
-  background: url('./../assets/movie-theatre.jpg') no-repeat;
+  background: url('./../assets/fm.jpg') no-repeat;
   background-size: cover;
   background-position: center;
   width: 100;
+  opacity: 0.8;
 }
 .tns-item {
   font-size: 3rem;

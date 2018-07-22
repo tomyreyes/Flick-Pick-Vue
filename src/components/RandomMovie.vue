@@ -1,7 +1,7 @@
 <template>
 	<div class="random-container">
 		<v-container>
-			<h1 class="subtitle">Still can't find a movie? Find a movie based on genre!</h1>
+			<h1 class="subtitle-alternate">Still can't find a movie? Find one by random!</h1>
 			<v-layout 
 				row 
 				wrap 

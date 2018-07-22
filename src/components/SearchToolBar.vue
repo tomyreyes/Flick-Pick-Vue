@@ -7,12 +7,13 @@
 				<img 
 					id="desktop-logo"
 					class="hidden-sm-and-down" 
-					src="./../assets/flick-pick-desktop.png"
+					src="./../assets/Flick-Pick-Desktop.png"
 				>
+			
 				<img 
 					id="mobile-logo"
 					class="hidden-md-and-up"
-					src="./../assets/flick-pick-mobile.png"
+					src="./../assets/Flick-Pick-Mobile.png"
 				>
 			</router-link>
 			<v-spacer/>
@@ -86,7 +87,6 @@
 				>
 					About
 				</v-btn>
-				<v-spacer/>
 				<v-btn 
 					flat
 					@click="goToList"
@@ -228,7 +228,11 @@ export default {
     height: 300px !important;
   }
 }
-
+@media only screen and (min-width: 960px) {
+  .v-input {
+    left: 70px;
+  }
+}
 .v-card__title {
   justify-content: center;
 }

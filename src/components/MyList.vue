@@ -1,12 +1,6 @@
 <template>
 	<div>
 		<h1 class="page-title">My List</h1>
-		<h3 
-			v-if="userList.length === 0"
-			class="subtitle" 
-		>
-			Your list is empty
-		</h3>
 		<RandomMovie
 			v-if="userList.length === 0"
 			class="random-movie"
