@@ -20,6 +20,7 @@ Coming soon.
 
 ## Special Thanks To:
 * [The Movie Database](https://www.themoviedb.org/) and their community for free access to their API
+* [Unsplash](https://www.unsplash.com) and the community of photographers who share their photographs free to use
 * Eugene Yu for working on the first version of this project with me in React. 
 
 ## This application was built using:
