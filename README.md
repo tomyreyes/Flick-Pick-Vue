@@ -4,7 +4,7 @@
 The go-to app to end all struggles to find that one movie to watch on a Friday night. Fellow movie lovers, aren't we tired of finding ourselves in situations where no one can decide or no one wants to take responsibility for selecting a movie? I present to you the solution. Instead of scrolling through every movie mindlessly, just add movies to your list and let Flick Pick make the decision for you!
 
 ## Demo
-Coming soon.
+https://flick-pick-vue.firebaseapp.com/
 
 ## Features
 + Search for any movie
@@ -17,6 +17,7 @@ Coming soon.
 + Save My List to localstorage
 + Include Cast and Director details 
 + Display which platforms each movie can be watched
++ Include avatar in search
 
 ## Special Thanks To:
 * [The Movie Database](https://www.themoviedb.org/) and their community for free access to their API
