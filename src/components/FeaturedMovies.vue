@@ -17,10 +17,16 @@
 				grid-list-md 
 			>
 				<h1 
-					class=" feature-message subtitle">Let us help you decide
+					class="feature-message subtitle-alternate">Are you a movie lover that struggles to make decisions?
 				</h1>
-				<p>Why waste hours everytime you want to watch a movie? Flick Pick will make the decision for you.
-				<br>Our platform will help you spend more time watching movies and less time scrolling.</p>
+				<p>Why waste hours every time you want to watch a movie? 
+					<br>Spend more time watching and less time arguing.
+				</p>
+				<h1 class="subtitle">Let us help you decide.</h1>
+				
+				<!-- <h2 class="subtitle">Featuring movies from:</h2>
+				<img src="./../assets/tmdb.png">
+				<img src="./../assets/tmdb.png"> -->
 				
 			</v-container> 
 		</div>
@@ -369,5 +375,8 @@ export default {
   background-position: center;
   width: 100;
   opacity: 0.8;
+}
+p {
+  font-size: 18px;
 }
 </style>
