@@ -50,7 +50,7 @@
 					<p class="description">
 						Let me set a scene for you. It's a rainy Friday evening and you are with your girlfriend and her two sisters. Seeing as you all have nothing else to do on an evening such as this, you decide to turn on Netflix. 
 						You then begin scrolling through the vast variety of movies available on this platform. Oh you see that The Town has been recently added and you excitedly pitch the movie to the group. Here it comes. Slowly, all three of them turn their heads at you and one of them emphatically says, "We are NOT watching a dumb movie about bank robbers!".
-						Now bitter from that insult (how dare they insult Ben Affleck's finest piece) you then ask them to suggest movies. They begin firing off movie titles. One of them suggests Ghostbusters, not the good one made in 1984 but the 2016 one, *sigh*. The other two suggest The Conjuring and Ferris Bueller's Day Off. These suggestions are all over the place. 
+						Now bitter from that insult (how dare they insult Ben Affleck's finest piece) you then ask them to suggest movies. They begin firing off movie titles. One of them suggests Ghostbusters. Not the good one made in 1984, but the 2016 one. *Sigh*. The other two suggest The Conjuring and Ferris Bueller's Day Off. These suggestions are all over the place! 
 					</p>
 					<p>
 						Before an argument ensues, like usual, take action and open up Flick Pick. 
